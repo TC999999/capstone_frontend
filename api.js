@@ -1,0 +1,104 @@
+import axios from "axios";
+
+const BASE_URL =
+  import.meta.env.VITE_REACT_APP_BASE_URL || "http://localhost:3000";
+
+class marketAPI {
+  static token = localStorage.getItem("market-token");
+
+  static async request(endpoint, data = {}, method = "get") {
+    console.debug("API Call:", endpoint, data, method);
+
+    //there are multiple ways to pass an authorization token, this is how you pass it in the header.
+    //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
+    const url = `${BASE_URL}/${endpoint}`;
+    const headers = { Authorization: `Bearer ${this.token}` };
+    const params = method === "get" ? data : {};
+
+    try {
+      return (await axios({ url, method, data, params, headers })).data;
+    } catch (err) {
+      console.error("API Error:", err.response);
+      let message = err.response.data.error.message;
+      throw Array.isArray(message) ? message : [message];
+    }
+  }
+
+  static async getAllUsers() {
+    let res = await this.request(`users`);
+    return res.user;
+  }
+
+  static async getUserInfo(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
+
+  static async signUp(userInfo) {
+    let res = await this.request("auth/register", userInfo, "post");
+    this.token = res.token;
+    return res.token;
+  }
+
+  static async logIn(userInfo) {
+    let res = await this.request("auth/token", userInfo, "post");
+    this.token = res.token;
+    return res.token;
+  }
+
+  static async getAllItems() {
+    let res = await this.request(`items`);
+    return res.items;
+  }
+
+  static async getItemById(id) {
+    let res = await this.request(`items/${id}`);
+    return res.item;
+  }
+
+  static async getAllTypes() {
+    let res = await this.request(`items/types/all`);
+    return res.types;
+  }
+
+  static async getReccomendedItems(username) {
+    let res = await this.request(`users/${username}/reccomendedItems`);
+    return res.reccomendedItems;
+  }
+
+  static async getItemsInLocation(username) {
+    let res = await this.request(`users/${username}/itemsInLocation`);
+    return res.itemsInLocation;
+  }
+
+  static async searchForItems(searchParams) {
+    let res = await this.request(`items`, searchParams);
+    return res.items;
+  }
+
+  static async addItem(itemInfo) {
+    let res = await this.request(`items`, itemInfo, "post");
+    return res;
+  }
+
+  static async getReviewByID(id) {
+    let res = await this.request(`reviews/${id}`);
+    return res.review;
+  }
+
+  static async sendMessage(itemID, toUser, data) {
+    let res = await this.request(
+      `messages/post/${itemID}/to/${toUser}`,
+      data,
+      "post"
+    );
+    return res.message;
+  }
+
+  static async getAllReports() {
+    let res = await this.request(`reports`);
+    return res.reports;
+  }
+}
+
+export default marketAPI;
