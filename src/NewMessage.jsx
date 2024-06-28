@@ -21,7 +21,7 @@ const NewMessage = () => {
     setIsLoading(true);
     const { body } = formData;
     try {
-      await marketAPI.sendMessage(itemID, toUser, body);
+      await marketAPI.sendMessage(itemID, toUser, { body });
       setFormData(initialState);
       navigate(`/items/${itemID}`);
     } catch (err) {

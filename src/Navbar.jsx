@@ -24,6 +24,7 @@ const NavBar = () => {
     <div className="navbar">
       <Link to="/">Home</Link>
       <Link to="/items/search/all">Search for Items</Link>
+      <Link to={`/users/${user.username}/messages`}>Messages</Link>
       {user.isAdmin && <Link to="reports">Reports</Link>}
       <span>
         <Link to={`/users/${user.username}`}>{user.username}</Link>

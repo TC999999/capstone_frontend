@@ -2,20 +2,14 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import marketApi from "../api";
 import UserContext from "./UserContext";
-import { createClient } from "@supabase/supabase-js";
 import { v4 as uuidv4 } from "uuid";
-
-const supabaseUrl = "https://iwyxashrshpdwjrvnnth.supabase.co";
-const supabaseKey =
-  import.meta.env.VITE_SUPABASE_KEY ||
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml3eXhhc2hyc2hwZHdqcnZubnRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTg2MzQzNzcsImV4cCI6MjAzNDIxMDM3N30.GLEozH0OEJlfWikBWFr3mIclOhNHDSNZ0yKr9l-eFuc";
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 const NewItem = () => {
   const initialState = {
     name: "",
     initialPrice: "0",
-    imagePath: "",
+    imageName: "",
+    imageFile: null,
     condition: "",
     description: "",
     typeIDArr: [],
@@ -24,7 +18,6 @@ const NewItem = () => {
   const { user } = useContext(UserContext);
   const [err, setErr] = useState(false);
   const [message, setMessage] = useState("");
-  const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState(initialState);
   const [types, setTypes] = useState([]);
@@ -57,16 +50,16 @@ const NewItem = () => {
   const handleFileChange = (e) => {
     let file = e.target.files[0];
     if (file) {
-      setFile(file);
       setFormData((data) => ({
         ...data,
-        imagePath: `public/${uuidv4()}-${file.name}`,
+        imageFile: file,
+        imageName: `${uuidv4()}-${file.name}`,
       }));
     } else {
-      setFile(null);
       setFormData((data) => ({
         ...data,
-        imagePath: "",
+        imageFile: null,
+        imageName: "",
       }));
     }
   };
@@ -91,30 +84,20 @@ const NewItem = () => {
       const {
         name,
         initialPrice,
-        imagePath,
+        imageName,
+        imageFile,
         condition,
         description,
         typeIDArr,
       } = formData;
-      console.log(formData);
 
       let parsedPrice = parseInt(initialPrice);
-
-      if (imagePath) {
-        const { data, error } = await supabase.storage
-          .from("images")
-          .upload(imagePath, file, {
-            cacheControl: "3600",
-            upsert: false,
-          });
-
-        console.log(data);
-      }
 
       await marketApi.addItem({
         name,
         initialPrice: parsedPrice,
-        imagePath,
+        imageName,
+        imageFile,
         condition,
         description,
         typeIDArr,
@@ -154,6 +137,7 @@ const NewItem = () => {
               name="imageFile"
               accept="image/png, image/jpeg, image/jpg"
               onChange={handleFileChange}
+              required
             />
           </div>
 

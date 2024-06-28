@@ -41,6 +41,7 @@ function App() {
   //update current user in local storage and context
   const updateUser = (user) => {
     localStorage.setItem("market-user", JSON.stringify(user));
+    currentUser(user);
   };
 
   return (

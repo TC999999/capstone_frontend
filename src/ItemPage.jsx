@@ -26,7 +26,6 @@ const ItemPage = () => {
           { latitude: user.latitude, longitude: user.longitude },
           { latitude: itemLat, longitude: itemLon }
         );
-        // console.log(itemToUser);
         setDistance(itemToUser);
         setIsLoading(false);
       } catch (err) {
@@ -57,6 +56,12 @@ const ItemPage = () => {
   return (
     <div className="item">
       <ItemCard item={item} />
+      {item.sellerUser === user.username && !item.isSold && (
+        <div className="for-sellers-eyes-only">
+          <Link to={`/items/${item.id}/edit`}>Edit Item</Link>
+          {/* <Link to={`/items/${item.id}/sell`}>Sell Item</Link> */}
+        </div>
+      )}
       {item.sellerUser !== user.username && (
         <div className="for-different-users-eyes-only">
           <p>

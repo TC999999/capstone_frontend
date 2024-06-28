@@ -13,6 +13,10 @@ class marketAPI {
     //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${this.token}` };
+    if (method === "post" && endpoint === "items") {
+      headers["Content-Type"] = "multipart/form-data";
+    }
+    // console.log(headers);
     const params = method === "get" ? data : {};
 
     try {
@@ -26,12 +30,34 @@ class marketAPI {
 
   static async getAllUsers() {
     let res = await this.request(`users`);
-    return res.user;
+    return res.users;
+  }
+
+  static async getAllUsersExcept(username) {
+    let res = await this.request(`users/allbut/${username}`);
+    return res.users;
   }
 
   static async getUserInfo(username) {
     let res = await this.request(`users/${username}`);
     return res.user;
+  }
+
+  static async updateUser(username, user) {
+    let res = await this.request(`users/${username}`, user, "patch");
+    return res.user;
+  }
+
+  static async getUserMessages(username) {
+    let res = await this.request(`users/${username}/messages`);
+    return res.messages;
+  }
+
+  static async getConversation(itemID, username1, username2) {
+    let res = await this.request(
+      `messages/conversation/item/${itemID}/users/${username1}/and/${username2}`
+    );
+    return res.conversation;
   }
 
   static async signUp(userInfo) {
@@ -54,6 +80,29 @@ class marketAPI {
   static async getItemById(id) {
     let res = await this.request(`items/${id}`);
     return res.item;
+  }
+
+  static async sellItem(itemID, buyerUsername) {
+    let res = await this.request(
+      `users/sellto/${buyerUsername}/item/${itemID}`,
+      {},
+      "post"
+    );
+    return res.purchase;
+  }
+
+  static async updateItem(id, username, itemInfo) {
+    let res = await this.request(
+      `items/${id}/edit/${username}`,
+      itemInfo,
+      "patch"
+    );
+    return res.item;
+  }
+
+  static async getItemSeller(id) {
+    let res = await this.request(`items/${id}/seller`);
+    return res.sellerUser;
   }
 
   static async getAllTypes() {
@@ -81,15 +130,20 @@ class marketAPI {
     return res;
   }
 
+  static async addReview(reviewInfo) {
+    let res = await this.request(`reviews/post`, reviewInfo, "post");
+    return res.review;
+  }
+
   static async getReviewByID(id) {
     let res = await this.request(`reviews/${id}`);
     return res.review;
   }
 
-  static async sendMessage(itemID, toUser, data) {
+  static async sendMessage(itemID, toUser, body) {
     let res = await this.request(
       `messages/post/${itemID}/to/${toUser}`,
-      data,
+      body,
       "post"
     );
     return res.message;

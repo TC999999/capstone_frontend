@@ -6,7 +6,7 @@ const ReviewCard = ({ review }) => {
       <h3>
         {" "}
         Review from
-        <Link to={`/users/${review.reviewer}`}>{review.reviewer}</Link>
+        <Link to={`/users/${review.reviewer}`}> {review.reviewer}</Link>
       </h3>
       <h2>{review.rating}/10</h2>
       <p>{review.body}</p>

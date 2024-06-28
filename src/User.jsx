@@ -65,6 +65,10 @@ const UserProfile = () => {
     return <h1>This user's account has been flagged!</h1>;
   }
 
+  if (err) {
+    return <h1>{message}</h1>;
+  }
+
   return (
     <div className="user-page">
       <div className="user-info">
@@ -92,15 +96,6 @@ const UserProfile = () => {
           </div>
         )}
         <ItemList items={items} />
-        {/* <ul>
-          {items.map((item) => {
-            return (
-              <li key={`item-${item.id}`}>
-                <ItemCard item={item} />
-              </li>
-            );
-          })}
-        </ul> */}
       </div>
 
       {user.username !== userInfo.username && (
@@ -109,7 +104,7 @@ const UserProfile = () => {
           <ul>
             {reviews.map((review) => {
               return (
-                <li key={`review-${review.id}`}>
+                <li key={`review-${review.reviewID}`}>
                   <ReviewCard review={review} />
                 </li>
               );

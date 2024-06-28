@@ -15,8 +15,6 @@ const Signup = ({ isLoading, setIsLoading }) => {
     city: "",
     regionOrState: "",
     country: "United States of America",
-    latitude: "",
-    longitude: "",
   };
   const { logIn } = useContext(UserContext);
   const navigate = useNavigate();
@@ -30,17 +28,10 @@ const Signup = ({ isLoading, setIsLoading }) => {
     maximumAge: 0,
   };
 
-  function success(pos) {
-    const crd = pos.coords;
-    setFormData((data) => ({
-      ...data,
-      latitude: parseFloat(crd.latitude),
-      longitude: parseFloat(crd.longitude),
-    }));
-  }
-
-  function error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
+  function getLocation() {
+    return new Promise((res, rej) => {
+      navigator.geolocation.getCurrentPosition(res, rej, options);
+    });
   }
 
   const handleChange = (e) => {
@@ -50,8 +41,9 @@ const Signup = ({ isLoading, setIsLoading }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigator.geolocation.getCurrentPosition(success, error, options);
     setIsLoading(true);
+    let position = await getLocation();
+    const { latitude, longitude } = position.coords;
     const {
       username,
       password,
@@ -63,8 +55,6 @@ const Signup = ({ isLoading, setIsLoading }) => {
       city,
       regionOrState,
       country,
-      latitude,
-      longitude,
     } = formData;
     try {
       const token = await marketAPI.signUp({
@@ -83,7 +73,7 @@ const Signup = ({ isLoading, setIsLoading }) => {
       });
 
       logIn(username, token);
-      setFormData(initialState);
+      setFormData({ ...initialState });
       navigate("/");
     } catch (err) {
       setErr(true);
