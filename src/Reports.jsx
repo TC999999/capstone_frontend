@@ -44,7 +44,7 @@ const Reports = () => {
 
   return (
     <div className="reports-page-div">
-      <ReportList reports={reports} />
+      <ReportList reports={reports} currentUser={user} />
     </div>
   );
 };

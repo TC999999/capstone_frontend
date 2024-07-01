@@ -17,7 +17,15 @@ function App() {
   //On initial render, get user information from local storage and set as context
   useEffect(() => {
     async function getToken() {
-      currentUser(JSON.parse(localStorage.getItem("market-user")));
+      let token = localStorage.getItem("market-token");
+      if (token) {
+        let userInfo = await marketAPI.getCurrentUser();
+        currentUser(userInfo);
+      }
+      // let userInfo = JSON.parse(localStorage.getItem("market-user"));
+      // let userName = localStorage.getItem("market-user");
+      // let userInfo = await marketAPI.getUserInfo(userName);
+      // currentUser(userInfo);
     }
     getToken();
   }, []);
@@ -25,23 +33,25 @@ function App() {
   //These functions and user state will be used in context
   //Set the token and current user in local storage, also set the user as context on login
   const logIn = async (username, token) => {
-    let userInfo = await marketAPI.getUserInfo(username);
     localStorage.setItem("market-token", token);
-    localStorage.setItem("market-user", JSON.stringify(userInfo));
+    let userInfo = await marketAPI.getUserInfo(username);
+    // localStorage.setItem("market-user", userInfo.username);
+    // localStorage.setItem("market-user", JSON.stringify(userInfo));
     currentUser(userInfo);
   };
 
   //remove token and user from local storage and set user context to null on logout
   const logOut = () => {
     localStorage.removeItem("market-token");
-    localStorage.removeItem("market-user");
+    // localStorage.removeItem("market-user");
     currentUser(null);
   };
 
   //update current user in local storage and context
-  const updateUser = (user) => {
-    localStorage.setItem("market-user", JSON.stringify(user));
-    currentUser(user);
+  const updateUser = async (username) => {
+    let userInfo = await marketAPI.getUserInfo(username);
+    // localStorage.setItem("market-user", JSON.stringify(user));
+    currentUser(userInfo);
   };
 
   return (

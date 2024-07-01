@@ -98,7 +98,7 @@ const UserEdit = () => {
       country,
     } = formData;
     try {
-      const updatedUser = await marketAPI.updateUser(user.username, {
+      await marketAPI.updateUser(user.username, {
         firstName,
         lastName,
         email,
@@ -110,7 +110,7 @@ const UserEdit = () => {
         latitude,
         longitude,
       });
-      updateUser({ ...user, ...updatedUser });
+      updateUser(user.username);
       setEditLoading(false);
       navigate(`/users/${user.username}`);
     } catch (err) {

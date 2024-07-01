@@ -1,6 +1,6 @@
 import Signup from "./SignUp.jsx";
 import Login from "./LogIn.jsx";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);

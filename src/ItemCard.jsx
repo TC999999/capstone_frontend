@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
-// import { useState, useEffect, useContext } from "react";
-// import UserContext from "./UserContext";
 
 const ItemCard = ({ item }) => {
-  //   const { user } = useContext(UserContext);
   return (
     <div className="item-card">
       {item.id ? (
@@ -17,7 +14,7 @@ const ItemCard = ({ item }) => {
       )}
 
       <p>
-        <b>Price:</b> {item.initialPrice}
+        <b>Price:</b> ${item.initialPrice}
       </p>
       {item.imageURL && (
         <img width="200" height="200" src={`${item.imageURL}`}></img>
@@ -36,7 +33,8 @@ const ItemCard = ({ item }) => {
       </p>
       {item.location && (
         <p>
-          <b>Location:</b> {item.location.city}, {item.location.regionOrState}
+          <b>Location:</b> {item.location.city}, {item.location.regionOrState},{" "}
+          {item.location.country}
         </p>
       )}
     </div>

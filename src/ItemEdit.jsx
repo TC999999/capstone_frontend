@@ -14,7 +14,7 @@ const ItemEdit = () => {
   const [formData, setFormData] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
   const [editLoading, setEditLoading] = useState(false);
-  const { user } = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
   const [sellerUser, setSellerUser] = useState("");
   const [itemName, setItemName] = useState("");
   const { id } = useParams();
@@ -22,21 +22,26 @@ const ItemEdit = () => {
   const [userErr, setUserErr] = useState(false);
   const [subErr, setSubErr] = useState(false);
   const [message, setMessage] = useState("");
+  const [isSold, setIsSold] = useState(false);
 
   useEffect(() => {
     const getItem = async () => {
       try {
         setIsLoading(true);
         let itemRes = await marketAPI.getItemById(id);
-        let { name, initialPrice, condition, description } = itemRes;
-        setItemName(name);
-        setFormData((d) => ({
-          ...d,
-          name,
-          initialPrice,
-          condition,
-          description,
-        }));
+        if (itemRes.isSold) {
+          setIsSold(true);
+        } else {
+          let { name, initialPrice, condition, description } = itemRes;
+          setItemName(name);
+          setFormData((d) => ({
+            ...d,
+            name,
+            initialPrice,
+            condition,
+            description,
+          }));
+        }
 
         setIsLoading(false);
       } catch (err) {
@@ -74,6 +79,7 @@ const ItemEdit = () => {
         condition,
         description,
       });
+      updateUser(user.username);
       setFormData(initialState);
       setEditLoading(false);
       navigate(`/items/${id}`);
@@ -90,6 +96,10 @@ const ItemEdit = () => {
 
   if (!user) {
     return <h1>Please Log In First!</h1>;
+  }
+
+  if (isSold) {
+    return <h1>This item Has already been sold!</h1>;
   }
 
   if (userErr) {

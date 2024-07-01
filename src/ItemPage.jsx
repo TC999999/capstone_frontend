@@ -59,7 +59,6 @@ const ItemPage = () => {
       {item.sellerUser === user.username && !item.isSold && (
         <div className="for-sellers-eyes-only">
           <Link to={`/items/${item.id}/edit`}>Edit Item</Link>
-          {/* <Link to={`/items/${item.id}/sell`}>Sell Item</Link> */}
         </div>
       )}
       {item.sellerUser !== user.username && (
@@ -72,11 +71,19 @@ const ItemPage = () => {
             <b>Estimated Driving Time: </b>{" "}
             {Math.round(100 * (distance / 80467.2)) / 100} hrs
           </p>
-          <div className="message-seller-link">
-            <Link to={`/messages/${item.sellerUser}/item/${item.id}`}>
-              Message
-            </Link>
-          </div>
+          {item.isSold ? (
+            <div>
+              <p>
+                <i>This item has been sold</i>
+              </p>
+            </div>
+          ) : (
+            <div className="message-seller-link">
+              <Link to={`/messages/${item.sellerUser}/item/${item.id}`}>
+                Message
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </div>

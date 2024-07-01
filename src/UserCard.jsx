@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, sameUser }) => {
   const calcRating = () => {
     if (typeof user.reviews === "object") {
       if (user.reviews.length) {
@@ -23,16 +23,21 @@ const UserCard = ({ user }) => {
         {" "}
         <Link to={`/users/${user.username}`}>{user.username}</Link>
       </h2>
+
+      {sameUser && (
+        <ul>
+          <li>
+            <b>First Name: </b> {user.firstName}
+          </li>
+          <li>
+            <b>Last Name: </b> {user.lastName}
+          </li>
+          <li>
+            <b>Email Address: </b> {user.email}
+          </li>
+        </ul>
+      )}
       <ul>
-        <li>
-          <b>First Name: </b> {user.firstName}
-        </li>
-        <li>
-          <b>Last Name: </b> {user.lastName}
-        </li>
-        <li>
-          <b>Email Address: </b> {user.email}
-        </li>
         <li>
           <b>Status: </b> {user.isAdmin ? "Admin" : "User"}
         </li>

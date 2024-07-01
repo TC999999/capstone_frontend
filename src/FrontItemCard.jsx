@@ -9,14 +9,17 @@ const FrontItemCard = ({ item }) => {
       <p>
         <b>Price:</b> {item.initialPrice}
       </p>
-      {item.imageURL && <img src={`${item.imageURL}`}></img>}
+      {item.imageURL && (
+        <img width="200" height="200" src={`${item.imageURL}`}></img>
+      )}
       {item.location ? (
         <p>
-          <b>Location:</b> {item.location.city}, {item.location.regionOrState}
+          <b>Location:</b> {item.location.city}, {item.location.regionOrState},{" "}
+          {item.location.country}
         </p>
       ) : (
         <p>
-          <b>Location:</b> {item.city}, {item.regionOrState}
+          <b>Location:</b> {item.city}, {item.regionOrState}, {item.country}
         </p>
       )}
     </div>

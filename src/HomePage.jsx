@@ -25,6 +25,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     if (user) {
       getFrontPageItems();
     } else {

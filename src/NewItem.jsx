@@ -15,7 +15,7 @@ const NewItem = () => {
     typeIDArr: [],
   };
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
   const [err, setErr] = useState(false);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -102,8 +102,10 @@ const NewItem = () => {
         description,
         typeIDArr,
       });
+
       setFormData(initialState);
       setIsLoading(false);
+      updateUser(user.username);
       navigate(`/users/${user.username}`);
     } catch (err) {
       console.log(err);
@@ -162,7 +164,7 @@ const NewItem = () => {
             required
           >
             <option key="default" value="">
-              -----Select Options Below-----
+              -----Choose Item Condition Below-----
             </option>
             <option key="great" value="Great">
               Great

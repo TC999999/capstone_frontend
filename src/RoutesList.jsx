@@ -12,7 +12,8 @@ import MessageList from "./MessageList.jsx";
 import Conversation from "./Conversation.jsx";
 import NewReview from "./NewReview.jsx";
 import ItemEdit from "./ItemEdit.jsx";
-// import ItemSale from "./ItemSale.jsx";
+import NewReport from "./NewReport.jsx";
+import ReportMessages from "./ReportMessages.jsx";
 
 const RoutesList = () => {
   return (
@@ -25,6 +26,7 @@ const RoutesList = () => {
       <Route path="/users/:username/edit" exact element={<UserEdit />} />
       <Route path="/users/:username/messages" exact element={<MessageList />} />
       <Route path="/users/:username/review" exact element={<NewReview />} />
+      <Route path="/users/:username/report" exact element={<NewReport />} />
       <Route
         path="/messages/conversation/item/:itemID/users/:username1/and/:username2"
         exact
@@ -38,8 +40,12 @@ const RoutesList = () => {
       <Route path="/items/new/add" exact element={<NewItem />} />
 
       <Route path="/reports" exact element={<Reports />} />
+      <Route
+        path="/reports/messages/:username1/:username2"
+        exact
+        element={<ReportMessages />}
+      />
       <Route path="/items/:id/edit" exact element={<ItemEdit />} />
-      {/* <Route path="/items/:id/sale" exact element={<ItemSale />} /> */}
     </Routes>
   );
 };

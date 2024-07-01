@@ -17,6 +17,11 @@ const ReportCard = ({ report }) => {
         <li>Report Body: {report.body}</li>
         <li>Made at: {report.madeAt}</li>
       </ul>
+      <Link
+        to={`/reports/messages/${report.reportedUser}/${report.reporterUser}`}
+      >
+        Check Messages
+      </Link>
     </div>
   );
 };

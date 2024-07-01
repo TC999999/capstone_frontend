@@ -10,6 +10,8 @@ const newReview = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useContext(UserContext);
   const [formData, setFormData] = useState(initialState);
+  const [err, setErr] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,6 +32,8 @@ const newReview = () => {
       setFormData(initialState);
       navigate(`/users/${username}`);
     } catch (err) {
+      setErr(true);
+      setMessage(err);
       setIsLoading(false);
     }
   };
@@ -73,6 +77,11 @@ const newReview = () => {
           <button>Add Review!</button>
         </div>
       </form>
+      {err && (
+        <p>
+          <i>{message}</i>
+        </p>
+      )}
     </div>
   );
 };

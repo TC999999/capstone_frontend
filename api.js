@@ -16,7 +16,6 @@ class marketAPI {
     if (method === "post" && endpoint === "items") {
       headers["Content-Type"] = "multipart/form-data";
     }
-    // console.log(headers);
     const params = method === "get" ? data : {};
 
     try {
@@ -33,9 +32,9 @@ class marketAPI {
     return res.users;
   }
 
-  static async getAllUsersExcept(username) {
-    let res = await this.request(`users/allbut/${username}`);
-    return res.users;
+  static async getCurrentUser() {
+    let res = await this.request(`users/get/current`);
+    return res.user;
   }
 
   static async getUserInfo(username) {
@@ -58,6 +57,13 @@ class marketAPI {
       `messages/conversation/item/${itemID}/users/${username1}/and/${username2}`
     );
     return res.conversation;
+  }
+
+  static async getMessagesForReports(username1, username2) {
+    let res = await this.request(
+      `messages/users/${username1}/and/${username2}`
+    );
+    return res.messages;
   }
 
   static async signUp(userInfo) {
@@ -152,6 +158,11 @@ class marketAPI {
   static async getAllReports() {
     let res = await this.request(`reports`);
     return res.reports;
+  }
+
+  static async addReport(reportInfo) {
+    let res = await this.request(`reports`, reportInfo, "post");
+    return res.report;
   }
 }
 
