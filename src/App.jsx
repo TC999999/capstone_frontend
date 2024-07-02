@@ -22,10 +22,6 @@ function App() {
         let userInfo = await marketAPI.getCurrentUser();
         currentUser(userInfo);
       }
-      // let userInfo = JSON.parse(localStorage.getItem("market-user"));
-      // let userName = localStorage.getItem("market-user");
-      // let userInfo = await marketAPI.getUserInfo(userName);
-      // currentUser(userInfo);
     }
     getToken();
   }, []);
@@ -35,22 +31,18 @@ function App() {
   const logIn = async (username, token) => {
     localStorage.setItem("market-token", token);
     let userInfo = await marketAPI.getUserInfo(username);
-    // localStorage.setItem("market-user", userInfo.username);
-    // localStorage.setItem("market-user", JSON.stringify(userInfo));
     currentUser(userInfo);
   };
 
   //remove token and user from local storage and set user context to null on logout
   const logOut = () => {
     localStorage.removeItem("market-token");
-    // localStorage.removeItem("market-user");
     currentUser(null);
   };
 
   //update current user in local storage and context
   const updateUser = async (username) => {
     let userInfo = await marketAPI.getUserInfo(username);
-    // localStorage.setItem("market-user", JSON.stringify(user));
     currentUser(userInfo);
   };
 

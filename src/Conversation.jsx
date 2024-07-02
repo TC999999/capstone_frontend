@@ -5,6 +5,7 @@ import UserContext from "./UserContext";
 import ConversationCard from "./ConversationCard.jsx";
 
 const Conversation = () => {
+  const initialState = { finalPrice: "", exchangeMethod: "" };
   const { user } = useContext(UserContext);
   const [itemName, setItemName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -15,6 +16,7 @@ const Conversation = () => {
   const [err, setErr] = useState(false);
   const [message, setMessage] = useState("");
   const [isSold, setIsSold] = useState(false);
+  const [formData, setFormData] = useState(initialState);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +27,7 @@ const Conversation = () => {
         if (item.isSold) {
           setIsSold(true);
         }
+        setFormData((data) => ({ ...data, finalPrice: item.initialPrice }));
         setItemName(item.name);
         let sellerUsername = await marketAPI.getItemSeller(itemID);
         setSellerUser(sellerUsername);
@@ -55,6 +58,11 @@ const Conversation = () => {
     }
   }, [user]);
 
+  const handleChange = async (e) => {
+    const { name, value } = e.target;
+    setFormData((data) => ({ ...data, [name]: value }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -62,8 +70,15 @@ const Conversation = () => {
       let message = {
         body: `Hello ${otherUser}, I have chosen to sell my ${itemName} to you. My address is at ${user.address}, ${user.city}, ${user.regionOrState}, ${user.country}, ${user.zipCode}. See you Soon!`,
       };
+      let { finalPrice, exchangeMethod } = formData;
       await marketAPI.sendMessage(itemID, otherUser, message);
-      await marketAPI.sellItem(itemID, otherUser);
+      let data = {
+        itemID,
+        buyerUsername: otherUser,
+        finalPrice,
+        exchangeMethod,
+      };
+      await marketAPI.sellItem(data);
       setIsLoading(false);
       navigate(`/users/${user.username}/messages`);
     } catch (err) {
@@ -92,9 +107,36 @@ const Conversation = () => {
         </Link>
       )}
       {sellerUser === user.username && !isSold && (
-        <div className="sell-item-button">
+        <div className="sell-item-form">
           {" "}
           <form onSubmit={handleSubmit}>
+            <select
+              id="exchangeMethod"
+              name="exchangeMethod"
+              onChange={handleChange}
+              required
+            >
+              <option key="default" value="">
+                -----Select Exchange Method Below-----
+              </option>
+              <option key="delivery" value="delivery">
+                Delivery
+              </option>
+              <option key="pickup" value="pickup">
+                Pickup
+              </option>
+            </select>
+            <label htmlFor="finalPrice">Price (in $): </label>
+            <input
+              id="finalPrice"
+              type="number"
+              name="finalPrice"
+              min="0"
+              placeholder="price of item"
+              value={formData.finalPrice}
+              onChange={handleChange}
+              required
+            />
             <button>Sell to {otherUser}</button>
           </form>
         </div>

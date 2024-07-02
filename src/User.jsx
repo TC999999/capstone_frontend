@@ -179,7 +179,7 @@ const UserProfile = () => {
         )}
       </div>
 
-      {user.username === userInfo.username && (
+      {(user.username === userInfo.username || user.isAdmin) && (
         <div className="user-purchases">
           <h2>Past Purchases</h2>
           {purchases.length ? (

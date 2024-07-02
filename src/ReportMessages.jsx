@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import UserContext from "./UserContext.js";
 import marketAPI from "../api";
 import ConversationCard from "./ConversationCard.jsx";
@@ -10,6 +10,7 @@ const ReportMessages = () => {
   const [messages, setMessages] = useState([]);
   const { username1, username2 } = useParams();
   const [notAdmin, setNotAdmin] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getMessages() {
@@ -49,7 +50,7 @@ const ReportMessages = () => {
 
   return (
     <div className="report-messages-div">
-      <Link to={`/reports`}>Back</Link>
+      <button onClick={() => navigate(-1)}>Back</button>
       {messages.map((message) => {
         return (
           <ConversationCard

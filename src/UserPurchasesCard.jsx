@@ -14,8 +14,16 @@ const PurchaseCard = ({ item }) => {
         </p>
       )}
       <p>
+        <b>Price:</b> ${item.price}
+      </p>
+      <p>
         <b>From a Flagged User:</b> {item.fromFlaggedUser ? "Yes" : "No"}
       </p>
+      <small>
+        <i>
+          <b>Sold At:</b> {item.soldAt}
+        </i>
+      </small>
     </div>
   );
 };

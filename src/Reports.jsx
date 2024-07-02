@@ -12,7 +12,8 @@ const Reports = () => {
     const getReports = async () => {
       setIsLoading(true);
       if (user.isAdmin) {
-        let reports = await marketAPI.getAllReports();
+        let usernameData = { username: user.username };
+        let reports = await marketAPI.getAllReports(usernameData);
         setReports(reports);
       }
     };
@@ -33,7 +34,6 @@ const Reports = () => {
     return <p className="loading-message">Loading...</p>;
   }
 
-  //Can only see the page if user is logged in
   if (!user) {
     return <h1>Please Log In First!</h1>;
   }
@@ -44,7 +44,7 @@ const Reports = () => {
 
   return (
     <div className="reports-page-div">
-      <ReportList reports={reports} currentUser={user} />
+      <ReportList reports={reports} />
     </div>
   );
 };

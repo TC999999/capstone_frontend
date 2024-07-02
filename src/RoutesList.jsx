@@ -14,6 +14,7 @@ import NewReview from "./NewReview.jsx";
 import ItemEdit from "./ItemEdit.jsx";
 import NewReport from "./NewReport.jsx";
 import ReportMessages from "./ReportMessages.jsx";
+import ReportPage from "./ReportPage.jsx";
 
 const RoutesList = () => {
   return (
@@ -40,12 +41,14 @@ const RoutesList = () => {
       <Route path="/items/new/add" exact element={<NewItem />} />
 
       <Route path="/reports" exact element={<Reports />} />
+      <Route path="/reports/:id" exact element={<ReportPage />} />
       <Route
         path="/reports/messages/:username1/:username2"
         exact
         element={<ReportMessages />}
       />
       <Route path="/items/:id/edit" exact element={<ItemEdit />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };

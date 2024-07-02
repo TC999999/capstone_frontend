@@ -1,4 +1,4 @@
-import ReportCard from "./ReportCard.jsx";
+import { Link } from "react-router-dom";
 
 const ReportList = ({ reports }) => {
   return (
@@ -10,7 +10,12 @@ const ReportList = ({ reports }) => {
           {reports.map((report) => {
             return (
               <li key={`report-${report.id}`}>
-                <ReportCard report={report} />
+                <Link to={`/reports/${report.id}`}>
+                  Report on {report.reportedUser} by {report.reporterUser}
+                </Link>
+                <p>
+                  <small>Made At: {report.madeAt}</small>
+                </p>
               </li>
             );
           })}

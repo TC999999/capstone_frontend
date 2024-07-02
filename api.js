@@ -92,12 +92,8 @@ class marketAPI {
     return res.item;
   }
 
-  static async sellItem(itemID, buyerUsername) {
-    let res = await this.request(
-      `users/sellto/${buyerUsername}/item/${itemID}`,
-      {},
-      "post"
-    );
+  static async sellItem(data) {
+    let res = await this.request(`users/items/sale`, data, "post");
     return res.purchase;
   }
 
@@ -169,13 +165,23 @@ class marketAPI {
     return res.notification;
   }
 
-  static async getAllReports() {
-    let res = await this.request(`reports`);
+  static async getAllReports(usernameData) {
+    let res = await this.request(`reports`, usernameData);
     return res.reports;
+  }
+
+  static async getReportByID(id) {
+    let res = await this.request(`reports/${id}`);
+    return res.report;
   }
 
   static async addReport(reportInfo) {
     let res = await this.request(`reports`, reportInfo, "post");
+    return res.report;
+  }
+
+  static async clearReport(id) {
+    let res = await this.request(`reports/clear/${id}`, {}, "patch");
     return res.report;
   }
 }
