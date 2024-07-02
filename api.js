@@ -41,6 +41,10 @@ class marketAPI {
     let res = await this.request(`users/${username}`);
     return res.user;
   }
+  static async getUserEmail(username) {
+    let res = await this.request(`users/${username}/email`);
+    return res.email;
+  }
 
   static async updateUser(username, user) {
     let res = await this.request(`users/${username}`, user, "patch");
@@ -111,6 +115,11 @@ class marketAPI {
     return res.sellerUser;
   }
 
+  static async getItemName(id) {
+    let res = await this.request(`items/getname/${id}`);
+    return res.item;
+  }
+
   static async getAllTypes() {
     let res = await this.request(`items/types/all`);
     return res.types;
@@ -153,6 +162,11 @@ class marketAPI {
       "post"
     );
     return res.message;
+  }
+
+  static async sendNotification(data) {
+    let res = await this.request(`messages/notifications`, data, "post");
+    return res.notification;
   }
 
   static async getAllReports() {
