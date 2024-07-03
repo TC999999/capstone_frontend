@@ -6,6 +6,12 @@ import ConversationCard from "./ConversationCard.jsx";
 
 const Conversation = () => {
   const initialState = { finalPrice: "", exchangeMethod: "" };
+  const templateParams = {
+    from_name: "",
+    user_email: "",
+    to_name: "",
+    item_name: "",
+  };
   const { user } = useContext(UserContext);
   const [itemName, setItemName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -17,6 +23,7 @@ const Conversation = () => {
   const [message, setMessage] = useState("");
   const [isSold, setIsSold] = useState(false);
   const [formData, setFormData] = useState(initialState);
+  const [emailParams, setEmailParams] = useState(templateParams);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +35,7 @@ const Conversation = () => {
           setIsSold(true);
         }
         setFormData((data) => ({ ...data, finalPrice: item.initialPrice }));
+
         setItemName(item.name);
         let sellerUsername = await marketAPI.getItemSeller(itemID);
         setSellerUser(sellerUsername);
@@ -40,8 +48,24 @@ const Conversation = () => {
         setConversation(conversation);
         if (username1 === user.username) {
           setOtherUser(username2);
+          const emailRes = await marketAPI.getUserEmail(username2);
+          setEmailParams((data) => ({
+            ...data,
+            from_name: user.username,
+            user_email: emailRes.email,
+            to_name: username2,
+            item_name: item.name,
+          }));
         } else if (username2 === user.username) {
           setOtherUser(username1);
+          const emailRes = await marketAPI.getUserEmail(username1);
+          setEmailParams((data) => ({
+            ...data,
+            from_name: user.username,
+            user_email: emailRes.email,
+            to_name: username1,
+            item_name: item.name,
+          }));
         }
         setIsLoading(false);
       } catch (err) {
@@ -71,7 +95,6 @@ const Conversation = () => {
         body: `Hello ${otherUser}, I have chosen to sell my ${itemName} to you. My address is at ${user.address}, ${user.city}, ${user.regionOrState}, ${user.country}, ${user.zipCode}. See you Soon!`,
       };
       let { finalPrice, exchangeMethod } = formData;
-      await marketAPI.sendMessage(itemID, otherUser, message);
       let data = {
         itemID,
         buyerUsername: otherUser,
@@ -79,6 +102,16 @@ const Conversation = () => {
         exchangeMethod,
       };
       await marketAPI.sellItem(data);
+      await marketAPI.sendMessage(itemID, otherUser, message);
+      let { from_name, user_email, to_name, item_name } = emailParams;
+      await marketAPI.sendNotification({
+        from_name,
+        user_email,
+        to_name,
+        item_name,
+        message: message.body,
+      });
+
       setIsLoading(false);
       navigate(`/users/${user.username}/messages`);
     } catch (err) {
