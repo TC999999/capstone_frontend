@@ -22,6 +22,18 @@ const UserProfile = () => {
   const { user } = useContext(UserContext);
   const [sameUser, setSameUser] = useState(false);
   const [purchases, setPurchases] = useState([]);
+  const [rating, setRating] = useState("no reviews yet");
+
+  const calcRating = (revArr) => {
+    if (revArr.length) {
+      let rating = revArr.reduce(function (acc, curr) {
+        return acc + curr.rating;
+      }, 0);
+      return `${rating / revArr.length}/10`;
+    } else {
+      return "no reviews yet";
+    }
+  };
 
   const getUser = async () => {
     try {
@@ -30,12 +42,35 @@ const UserProfile = () => {
       if (userRes.isFlagged && !user.isAdmin) {
         setFlaggedUser(true);
       } else {
-        setUserInfo(userRes);
+        let {
+          username,
+          isAdmin,
+          isFlagged,
+          items,
+          reviews,
+          reports,
+          pastPurchases,
+          firstName,
+          lastName,
+          email,
+        } = userRes;
+        setUserInfo({ username, isAdmin, isFlagged, items, reviews, reports });
         if (userRes.username === user.username) {
           setSameUser(true);
+          setUserInfo((data) => ({
+            ...data,
+            firstName,
+            lastName,
+            email,
+            pastPurchases,
+          }));
           setPurchases(userRes.pastPurchases);
+        } else {
+          setSameUser(false);
+          setPurchases([]);
         }
         setReviews(userRes.reviews);
+        setRating(calcRating(userRes.reviews));
         setItems(userRes.items);
         setReports(userRes.reports);
 
@@ -64,7 +99,7 @@ const UserProfile = () => {
   const changeAdminStatus = async () => {
     try {
       const data = { isAdmin: !userInfo.isAdmin };
-      await marketAPI.updateUser(userInfo.username, data);
+      await marketAPI.updateUserAdminOnly(userInfo.username, data);
       getUser();
     } catch (err) {
       setIsLoading(false);
@@ -74,7 +109,7 @@ const UserProfile = () => {
   const changeFlagStatus = async () => {
     try {
       const data = { isFlagged: !userInfo.isFlagged };
-      await marketAPI.updateUser(userInfo.username, data);
+      await marketAPI.updateUserAdminOnly(userInfo.username, data);
       getUser();
     } catch (err) {
       setIsLoading(false);
@@ -83,6 +118,7 @@ const UserProfile = () => {
 
   if (username !== currPage) {
     getUser();
+
     setCurrPage(username);
     setErr(false);
     setMessage("");
@@ -107,7 +143,7 @@ const UserProfile = () => {
   return (
     <div className="user-page">
       <div className="user-info">
-        <UserCard user={userInfo} sameUser={sameUser} />
+        <UserCard user={userInfo} sameUser={sameUser} rating={rating} />
         {user.username === userInfo.username && (
           <Link to={`/users/${userInfo.username}/edit`}>Edit Profile</Link>
         )}
@@ -126,9 +162,9 @@ const UserProfile = () => {
           user.isAdmin &&
           !userInfo.isFlagged && (
             <div className="change-admin-status">
-              <form onSubmit={changeAdminStatus}>
-                <button>Change Admin Status</button>
-              </form>
+              <button onClick={() => changeAdminStatus()}>
+                Change Admin Status
+              </button>
             </div>
           )}
 
@@ -137,9 +173,9 @@ const UserProfile = () => {
           reports.length > 0 &&
           !userReported && (
             <div className="change-admin-status">
-              <form onSubmit={changeFlagStatus}>
-                <button>Change Flag Status</button>
-              </form>
+              <button onClick={() => changeFlagStatus()}>
+                Change Flag Status
+              </button>
             </div>
           )}
       </div>

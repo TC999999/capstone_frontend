@@ -50,6 +50,9 @@ const ReportMessages = () => {
 
   return (
     <div className="report-messages-div">
+      <h1>
+        Messages between {username1} and {username2}
+      </h1>
       <button onClick={() => navigate(-1)}>Back</button>
       {messages.map((message) => {
         return (
@@ -59,6 +62,11 @@ const ReportMessages = () => {
           />
         );
       })}
+      {!messages.length && (
+        <p>
+          <i>These users have not messaged each other</i>
+        </p>
+      )}
     </div>
   );
 };

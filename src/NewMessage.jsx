@@ -17,6 +17,8 @@ const NewMessage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState(initialState);
   const [emailParams, setEmailParams] = useState(templateParams);
+  const [err, setErr] = useState(false);
+  const [message, setMessage] = useState("");
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -59,6 +61,8 @@ const NewMessage = () => {
       setEmailParams(templateParams);
       navigate(`/items/${itemID}`);
     } catch (err) {
+      setErr(true);
+      setMessage(err);
       setIsLoading(false);
     }
   };
@@ -90,6 +94,7 @@ const NewMessage = () => {
           <button>Send Message!</button>
         </div>
       </form>
+      {err && <div className="error-message">{message}</div>}
     </div>
   );
 };

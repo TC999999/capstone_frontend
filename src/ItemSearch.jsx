@@ -17,8 +17,6 @@ const ItemSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentSearch, setCurrentSearch] = useState(searchParams);
   const { user } = useContext(UserContext);
-  const [err, setErr] = useState(false);
-  const [message, setMessage] = useState("");
 
   useEffect(() => {
     function getCompanies() {
@@ -26,8 +24,8 @@ const ItemSearch = () => {
         setIsLoading(true);
         checkParams();
       } catch (err) {
-        setErr(true);
-        setMessage(err[0]);
+        console.log(err);
+        setIsLoading(false);
       }
     }
 
@@ -55,13 +53,10 @@ const ItemSearch = () => {
       }
       let filteredItems = await marketAPI.searchForItems(params);
       setSearchParams(params);
-      setErr(false);
-      setMessage("");
+
       setItems(filteredItems);
       setIsLoading(false);
     } catch (err) {
-      setErr(true);
-      setMessage(err[0]);
       setIsLoading(false);
       setSearch({ ...initialState, name: search.name });
     }
@@ -116,7 +111,12 @@ const ItemSearch = () => {
             value={search.maxPrice}
             onChange={handleChange}
           />
-          <select id="condition" name="condition" onChange={handleChange}>
+          <select
+            id="condition"
+            name="condition"
+            value={search.condition}
+            onChange={handleChange}
+          >
             <option key="default" value="">
               Item Condition
             </option>

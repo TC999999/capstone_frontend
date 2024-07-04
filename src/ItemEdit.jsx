@@ -145,6 +145,7 @@ const ItemEdit = () => {
           <select
             id="condition"
             name="condition"
+            value={formData.condition}
             onChange={handleChange}
             required
           >

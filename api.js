@@ -51,6 +51,15 @@ class marketAPI {
     return res.user;
   }
 
+  static async updateUserAdminOnly(username, user) {
+    let res = await this.request(
+      `users/${username}/adminUpdate`,
+      user,
+      "patch"
+    );
+    return res.user;
+  }
+
   static async getUserMessages(username) {
     let res = await this.request(`users/${username}/messages`);
     return res.messages;
