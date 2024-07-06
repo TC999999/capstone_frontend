@@ -1,0 +1,14 @@
+.report-list-div {
+  margin: 5px;
+}
+
+.report-list-div li {
+  list-style-type: none;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 2px;
+}
+
+.report-list-div a {
+  text-decoration-line: none;
+}

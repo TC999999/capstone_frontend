@@ -1,0 +1,47 @@
+.sell-item-form-elements-div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sell-form-div {
+  margin: 5px;
+}
+
+.sell-item-button {
+  background-color: rgb(13, 246, 40);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+}
+
+.sell-item-button:hover {
+  background-color: green;
+  color: white;
+}
+
+.sell-item-button:active {
+  background-color: rgb(21, 242, 39);
+  color: black;
+}
+
+.new-message-button {
+  background-color: aqua;
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.new-message-button:hover {
+  background-color: white;
+  color: aqua;
+}
+
+.new-message-button:active {
+  background-color: rgb(16, 80, 218);
+  color: black;
+}

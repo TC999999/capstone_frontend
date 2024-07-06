@@ -1,0 +1,8 @@
+.review-card {
+  border: solid 2px forestgreen;
+  padding: 5px;
+}
+
+.review-card a {
+  text-decoration-line: none;
+}

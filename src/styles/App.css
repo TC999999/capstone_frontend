@@ -1,0 +1,39 @@
+body {
+  background-color: beige;
+}
+
+.app-header {
+  text-align: center;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 70px;
+}
+
+.app-header > span:nth-of-type(2n + 1) {
+  color: red;
+}
+
+.app-header > span:nth-of-type(2n) {
+  color: blue;
+}
+
+.err-msg {
+  color: red;
+  font-weight: bold;
+}
+
+.back-button {
+  background-color: aliceblue;
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.back-button:hover {
+  background-color: rgba(202, 204, 205, 0.92);
+}
+
+.back-button:active {
+  background-color: aliceblue;
+}

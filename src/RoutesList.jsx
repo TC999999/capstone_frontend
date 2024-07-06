@@ -1,20 +1,20 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import ItemSearch from "./ItemSearch.jsx";
-import ItemPage from "./ItemPage.jsx";
+import ItemSearch from "./items/ItemSearch.jsx";
+import ItemPage from "./items/ItemPage.jsx";
 import Home from "./HomePage.jsx";
-import Register from "./Register.jsx";
-import NewMessage from "./NewMessage.jsx";
-import NewItem from "./NewItem.jsx";
-import UserProfile from "./User.jsx";
-import UserEdit from "./UserEdit.jsx";
-import Reports from "./Reports.jsx";
-import MessageList from "./MessageList.jsx";
-import Conversation from "./Conversation.jsx";
-import NewReview from "./NewReview.jsx";
-import ItemEdit from "./ItemEdit.jsx";
-import NewReport from "./NewReport.jsx";
-import ReportMessages from "./ReportMessages.jsx";
-import ReportPage from "./ReportPage.jsx";
+import Register from "./authentication/Register.jsx";
+import NewMessage from "./messages/NewMessage.jsx";
+import NewItem from "./items/NewItem.jsx";
+import UserProfile from "./users/User.jsx";
+import UserEdit from "./users/UserEdit.jsx";
+import Reports from "./reports/Reports.jsx";
+import MessageList from "./messages/MessageList.jsx";
+import Conversation from "./messages/Conversation.jsx";
+import NewReview from "./reviews/NewReview.jsx";
+import ItemEdit from "./items/ItemEdit.jsx";
+import NewReport from "./reports/NewReport.jsx";
+import ReportMessages from "./reports/ReportMessages.jsx";
+import ReportPage from "./reports/ReportPage.jsx";
 
 const RoutesList = () => {
   return (

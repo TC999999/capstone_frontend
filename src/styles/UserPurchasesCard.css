@@ -1,0 +1,17 @@
+.purchase-card {
+  display: flex;
+  justify-content: flex-start;
+  border: solid 2px blue;
+}
+
+.purchase-card a {
+  text-decoration-line: none;
+}
+
+.inner-purchase-card-div {
+  margin: 5px;
+}
+
+.additional-purchase-info {
+  padding: 40px;
+}

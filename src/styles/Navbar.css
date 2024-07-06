@@ -1,0 +1,46 @@
+.navbar {
+  background-color: #88aeeb;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  color: white;
+  margin: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration-line: none;
+}
+
+.navbar span {
+  margin: 5px;
+}
+
+.navbar a:hover {
+  color: purple;
+  background-color: aqua;
+}
+
+.navbar a:active {
+  color: purple;
+  background-color: white;
+}
+
+.auth-button {
+  background-color: blue;
+  color: white;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 2px;
+  font-weight: bold;
+}
+
+.auth-button:hover {
+  background-color: aqua;
+  color: purple;
+}
+
+.auth-button:active {
+  background-color: purple;
+  color: white;
+}

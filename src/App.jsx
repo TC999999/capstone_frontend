@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import UserContext from "./UserContext.js";
 import { BrowserRouter } from "react-router-dom";
 import marketAPI from "../api.js";
-// import './App.css'
+import "./styles/App.css";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,6 +50,24 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <UserContext.Provider value={{ user, logIn, logOut, updateUser }}>
+          <h1 className="app-header">
+            <span>C</span>
+            <span>a</span>
+            <span>p</span>
+            <span>s</span>
+            <span>t</span>
+            <span>o</span>
+            <span>n</span>
+            <span>e</span>
+            <span> </span>
+            <span>M</span>
+            <span>a</span>
+            <span>r</span>
+            <span>k</span>
+            <span>e</span>
+            <span>t</span>
+            <span>!</span>
+          </h1>
           <NavBar logOut={logOut} />
           <RoutesList />
         </UserContext.Provider>

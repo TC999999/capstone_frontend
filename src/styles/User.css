@@ -1,0 +1,115 @@
+.user-page h2 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.buttons-div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.edit-user-button {
+  background-color: rgb(236, 243, 36);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+}
+
+.edit-user-button:hover {
+  background-color: gold;
+  color: white;
+}
+
+.edit-user-button:active {
+  background-color: rgb(247, 226, 107);
+  color: black;
+}
+
+.review-user-button {
+  background-color: rgb(113, 232, 95);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.review-user-button:hover {
+  background-color: green;
+  color: white;
+}
+
+.review-user-button:active {
+  background-color: rgb(49, 231, 8);
+  color: black;
+}
+
+.report-user-button {
+  background-color: rgb(240, 45, 84);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.report-user-button:hover {
+  background-color: red;
+  color: white;
+}
+
+.report-user-button:active {
+  background-color: rgb(237, 64, 64);
+  color: black;
+}
+
+.admin-status-button {
+  background-color: rgb(0, 191, 255);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.admin-status-button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.admin-status-button:active {
+  background-color: rgb(64, 222, 237);
+  color: black;
+}
+
+.flag-status-button {
+  background-color: rgb(247, 0, 255);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.flag-status-button:hover {
+  background-color: purple;
+  color: white;
+}
+
+.flag-status-button:active {
+  background-color: rgb(242, 14, 238);
+  color: black;
+}
+
+.user-reviews li {
+  list-style-type: none;
+}
+
+.user-purchases li {
+  list-style-type: none;
+}

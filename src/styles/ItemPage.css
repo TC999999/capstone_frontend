@@ -1,0 +1,37 @@
+.item-message-button {
+  background-color: aqua;
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+}
+
+.item-message-button:hover {
+  background-color: white;
+  color: aqua;
+}
+
+.item-message-button:active {
+  background-color: rgb(16, 80, 218);
+  color: black;
+}
+
+.edit-item-button {
+  background-color: rgb(236, 243, 36);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+}
+
+.edit-item-button:hover {
+  background-color: gold;
+  color: white;
+}
+
+.edit-item-button:active {
+  background-color: rgb(247, 226, 107);
+  color: black;
+}

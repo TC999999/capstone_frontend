@@ -1,0 +1,25 @@
+.new-message-div {
+  border: solid 2px rgb(49, 9, 230);
+  margin: 10px;
+  padding: 10px;
+}
+
+.send-message-button {
+  background-color: rgb(11, 184, 227);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.send-message-button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.send-message-button:active {
+  background-color: rgb(0, 200, 255);
+  color: black;
+}

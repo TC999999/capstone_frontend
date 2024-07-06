@@ -1,0 +1,24 @@
+.item-card {
+  display: flex;
+  justify-content: flex-start;
+  border: solid 1px blue;
+  box-shadow: 5px 5px 5px black;
+  margin: 10px;
+  background-color: rgb(228, 220, 220);
+}
+
+.item-card a {
+  text-decoration-line: none;
+}
+
+.item-card h3 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.item-info {
+  margin: 5px;
+}
+
+.additional-item-info {
+  padding-top: 45px;
+}

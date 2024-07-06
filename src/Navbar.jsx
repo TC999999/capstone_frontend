@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "./UserContext";
+import "./styles/Navbar.css";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -15,7 +16,9 @@ const NavBar = () => {
     return (
       <div className="navbar">
         <Link to="/">Home</Link>
-        <Link to="/register">Sign Up/Login</Link>
+        <Link to="/register">
+          <button className="auth-button">Sign Up/Login</button>
+        </Link>
       </div>
     );
   }
@@ -28,7 +31,9 @@ const NavBar = () => {
       {user.isAdmin && <Link to="reports">Reports</Link>}
       <span>
         <Link to={`/users/${user.username}`}>{user.username}</Link>
-        <button onClick={logOutAndNavigate}>Log Out</button>
+        <button className="auth-button" onClick={logOutAndNavigate}>
+          Log Out
+        </button>
       </span>
     </div>
   );

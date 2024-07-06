@@ -1,0 +1,46 @@
+.report-div {
+  border: solid 2px black;
+  box-shadow: 5px 5px 5px black;
+  margin: 10px;
+  padding: 5px;
+}
+
+.clear-report-button {
+  background-color: aquamarine;
+  font-weight: bold;
+  padding: 5px;
+  border: solid 2px black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px black;
+  margin: 5px;
+}
+
+.clear-report-button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.clear-report-button:active {
+  background-color: rgb(89, 186, 242);
+  color: black;
+}
+
+.check-messages-button {
+  background-color: rgb(255, 127, 242);
+  font-weight: bold;
+  padding: 5px;
+  border: solid 2px black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px black;
+  margin: 5px;
+}
+
+.check-messages-button:hover {
+  background-color: purple;
+  color: white;
+}
+
+.check-messages-button:active {
+  background-color: rgb(226, 33, 226);
+  color: black;
+}

@@ -1,0 +1,33 @@
+.new-review-div {
+  border: solid 2px green;
+  padding: 5px;
+  margin: 10px;
+}
+
+.review-form-div {
+  margin: 10px;
+}
+
+.new-review-button {
+  background-color: rgb(113, 232, 95);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.new-review-button:hover {
+  background-color: green;
+  color: white;
+}
+
+.new-review-button:active {
+  background-color: rgb(49, 231, 8);
+  color: black;
+}
+
+.review-rating-div label {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}

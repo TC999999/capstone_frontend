@@ -1,25 +1,23 @@
 import { useState, useEffect, useContext } from "react";
 import UserContext from "./UserContext";
 import marketAPI from "../api";
-import FrontItemList from "./FrontItems.jsx";
+import FrontItemList from "./items/FrontItems.jsx";
+import "./styles/HomePage.css";
 
 const Home = () => {
   const { user } = useContext(UserContext);
   const [reccomendedItems, setReccomendedItems] = useState([]);
   const [itemsInLocation, setItemsInLocation] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  //   const [err, setErr] = useState(false);
 
   const getFrontPageItems = async () => {
     try {
-      setIsLoading(true);
       let reccomendedItems = await marketAPI.getReccomendedItems(user.username);
       let itemsInLocation = await marketAPI.getItemsInLocation(user.username);
       setReccomendedItems(reccomendedItems);
       setItemsInLocation(itemsInLocation);
       setIsLoading(false);
     } catch (err) {
-      //   setErr(true);
       setIsLoading(false);
     }
   };
@@ -39,18 +37,20 @@ const Home = () => {
 
   return (
     <div className="home-div">
-      <h1>Welcome to The Market!</h1>
+      <h1>Welcome to The Capstone Market!</h1>
       {!user && <h2>Please log in for full experience!</h2>}
       {user && (
-        <div className="front-page-items">
-          <h2>Welcome {user.username}</h2>
-          <div className="reccomended-items-list-div">
-            <h3>Items For You!</h3>
-            <FrontItemList items={reccomendedItems} />
-          </div>
-          <div className="items-near-location-list-div">
-            <h3>Items Near You!</h3>
-            <FrontItemList items={itemsInLocation} />
+        <div className="front-page-user">
+          <h2>Reccomended Items for {user.username}</h2>
+          <div className="front-page-items">
+            <div className="reccomended-items-list-div">
+              <h2>Items For You!</h2>
+              <FrontItemList items={reccomendedItems} />
+            </div>
+            <div className="items-near-location-list-div">
+              <h2>Items Near You!</h2>
+              <FrontItemList items={itemsInLocation} />
+            </div>
           </div>
         </div>
       )}

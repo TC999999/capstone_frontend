@@ -1,0 +1,22 @@
+.register-forms {
+  margin: 10px;
+}
+
+.get-profile-button {
+  background-color: green;
+  color: white;
+  border: solid 1px;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.get-profile-button:hover {
+  background-color: white;
+  color: green;
+}
+
+.get-profile-button:active {
+  background-color: rgb(21, 243, 1);
+  color: black;
+}

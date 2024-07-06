@@ -1,0 +1,9 @@
+.message-card {
+  border: solid 2px black;
+  padding: 2px;
+  background-color: whitesmoke;
+}
+
+.message-card a {
+  text-decoration-line: none;
+}

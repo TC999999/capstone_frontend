@@ -1,0 +1,29 @@
+.new-report-div {
+  border: solid 2px red;
+  padding: 5px;
+  margin: 10px;
+}
+
+.report-form-div {
+  margin: 10px;
+}
+
+.new-report-button {
+  background-color: rgb(237, 71, 71);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.new-report-button:hover {
+  background-color: red;
+  color: white;
+}
+
+.new-report-button:active {
+  background-color: rgb(236, 83, 83);
+  color: black;
+}

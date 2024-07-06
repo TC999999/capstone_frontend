@@ -1,0 +1,28 @@
+.edit-form-div {
+  border: solid 2px;
+  border-color: black;
+  padding: 10px;
+  margin: 5px;
+}
+
+.edit-form-div label {
+  font-size: 15px;
+}
+
+.edit-form-div input {
+  width: 50%;
+  margin: 5px;
+  font-size: 15px;
+}
+
+@media (min-width: 800px) {
+  .edit-form-div label {
+    font-size: 18px;
+  }
+
+  .edit-form-div input {
+    width: 50%;
+    margin: 5px;
+    font-size: 18px;
+  }
+}
