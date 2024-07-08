@@ -1,0 +1,66 @@
+.new-type-info-div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.new-type-info-div h3 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.current-types-div {
+  border: solid 2px crimson;
+  width: 200px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px black;
+  background-color: rgb(253, 120, 120);
+}
+
+.current-types-div li {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
+}
+
+.add-new-type-form {
+  border: solid 2px green;
+  border-radius: 10px;
+  width: 300px;
+  padding: 5px;
+  height: 200px;
+  margin: 10px;
+  box-shadow: 5px 5px 5px black;
+  background-color: lightgreen;
+  position: sticky;
+}
+
+.new-type-name-div input[type="text"] {
+  font-size: 15px;
+  width: 90%;
+}
+
+@media (min-width: 800px) {
+  .new-type-name-div input[type="text"] {
+    font-size: 18px;
+  }
+}
+
+.add-item-type-form-button {
+  background-color: rgb(36, 209, 243);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.add-item-type-form-button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.add-item-type-form-button:active {
+  background-color: rgb(36, 209, 243);
+  color: black;
+}

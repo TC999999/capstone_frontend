@@ -15,26 +15,47 @@ const NavBar = () => {
   if (!user) {
     return (
       <div className="navbar">
-        <Link to="/">Home</Link>
-        <Link to="/register">
-          <button className="auth-button">Sign Up/Login</button>
-        </Link>
+        <div className="nav-box">
+          <Link to="/">Home</Link>
+        </div>
+        <div className="nav-box">
+          <Link to="/register">
+            <button className="auth-button">Sign Up/Login</button>
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="navbar">
-      <Link to="/">Home</Link>
-      <Link to="/items/search/all">Search for Items</Link>
-      <Link to={`/users/${user.username}/messages`}>Messages</Link>
-      {user.isAdmin && <Link to="reports">Reports</Link>}
-      <span>
-        <Link to={`/users/${user.username}`}>{user.username}</Link>
+      <div className="nav-box">
+        <Link to="/">Home</Link>
+      </div>
+      <div className="nav-box">
+        <Link to="/items/search/all">Search for Items</Link>
+      </div>
+      <div className="nav-box">
+        <Link to={`/users/${user.username}/messages`}>Messages</Link>
+      </div>
+      {user.isAdmin && (
+        <div className="nav-box">
+          <Link to="/reports">Reports</Link>
+        </div>
+      )}
+      {user.isAdmin && (
+        <div className="nav-box">
+          <Link to="/users">Users</Link>
+        </div>
+      )}
+      <div className="double-nav-box">
+        <span className="user-nav">
+          <Link to={`/users/${user.username}`}>{user.username}</Link>
+        </span>
         <button className="auth-button" onClick={logOutAndNavigate}>
           Log Out
         </button>
-      </span>
+      </div>
     </div>
   );
 };

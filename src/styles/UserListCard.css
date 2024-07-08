@@ -1,0 +1,29 @@
+.user-list-card {
+  border: solid 2px red;
+  border-radius: 10px;
+  background-color: rgb(150, 242, 242);
+  box-shadow: 5px 5px 5px black;
+  padding: 5px;
+  margin: 5px;
+  font-size: 15px;
+}
+
+@media (min-width: 800px) {
+  .user-list-card {
+    font-size: 18px;
+  }
+}
+
+.user-list-card a {
+  color: blue;
+  text-decoration-line: none;
+}
+
+.user-list-card a:hover {
+  color: purple;
+  text-decoration-line: underline;
+}
+
+.user-list-card a:active {
+  color: aqual;
+}

@@ -2,6 +2,16 @@
   border: solid 2px red;
   padding: 5px;
   margin: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  background-color: rgb(246, 115, 141);
+  box-shadow: 5px 5px 5px black;
+}
+
+@media (min-width: 800px) {
+  .new-report-div {
+    font-size: 18px;
+  }
 }
 
 .report-form-div {

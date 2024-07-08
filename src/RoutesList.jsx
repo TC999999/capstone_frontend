@@ -15,6 +15,8 @@ import ItemEdit from "./items/ItemEdit.jsx";
 import NewReport from "./reports/NewReport.jsx";
 import ReportMessages from "./reports/ReportMessages.jsx";
 import ReportPage from "./reports/ReportPage.jsx";
+import NewType from "./items/NewType.jsx";
+import AllUsers from "./users/AllUsers.jsx";
 
 const RoutesList = () => {
   return (
@@ -23,6 +25,8 @@ const RoutesList = () => {
       <Route path="/register" exact element={<Register />} />
       <Route path="/items/search/all" exact element={<ItemSearch />} />
       <Route path="/items/:id" exact element={<ItemPage />} />
+      <Route path="/items/type/new" exact element={<NewType />} />
+      <Route path="/users" exact element={<AllUsers />} />
       <Route path="/users/:username" exact element={<UserProfile />} />
       <Route path="/users/:username/edit" exact element={<UserEdit />} />
       <Route path="/users/:username/messages" exact element={<MessageList />} />

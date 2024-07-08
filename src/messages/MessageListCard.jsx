@@ -11,9 +11,11 @@ const MessageListCard = ({ message }) => {
           From: {message.from} about item {message.itemName}{" "}
         </Link>
       </h3>
-      <p>
-        <b>Sent At: </b>
-        {message.createdAt}
+      <p className="message-sent">
+        <small>
+          <b>Sent At: </b>
+          {message.createdAt}
+        </small>
       </p>
     </div>
   );

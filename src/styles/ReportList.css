@@ -1,14 +1,34 @@
-.report-list-div {
+.report-list-page-div {
   margin: 5px;
 }
 
-.report-list-div li {
+.report-list-item {
   list-style-type: none;
   border: 2px solid black;
   padding: 10px;
   margin: 2px;
+  background-color: rgb(245, 115, 115);
+  box-shadow: 5px 5px 5px black;
 }
 
-.report-list-div a {
+.report-list-page-div a {
   text-decoration-line: none;
+  font-weight: bold;
+  font-size: 15px;
+  color: blue;
+}
+
+.report-list-page-div a:hover {
+  text-decoration-line: underline;
+  color: purple;
+}
+
+.report-list-page-div a:active {
+  color: aqua;
+}
+
+@media (min-width: 800px) {
+  .report-list-page-div a {
+    font-size: 20px;
+  }
 }

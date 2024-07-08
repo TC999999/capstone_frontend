@@ -5,10 +5,28 @@
   box-shadow: 5px 5px 5px black;
   margin: 10px;
   background-color: rgb(228, 220, 220);
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+@media (min-width: 800px) {
+  .item-card {
+    font-size: 18px;
+  }
 }
 
 .item-card a {
   text-decoration-line: none;
+  color: blue;
+}
+
+.item-card a:hover {
+  text-decoration-line: underline;
+  color: purple;
+}
+
+.item-card a:active {
+  color: aqua;
 }
 
 .item-card h3 {

@@ -1,5 +1,4 @@
 import ItemCard from "./ItemCard.jsx";
-// import "./Items.css"
 
 const ItemList = ({ items }) => {
   return (

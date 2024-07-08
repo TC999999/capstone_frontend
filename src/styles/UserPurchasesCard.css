@@ -2,10 +2,26 @@
   display: flex;
   justify-content: flex-start;
   border: solid 2px blue;
+  background-color: rgb(237, 194, 113);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px black;
+  font-size: 15px;
+}
+
+@media (min-width: 800px) {
+  .purchase-card {
+    font-size: 18px;
+  }
 }
 
 .purchase-card a {
   text-decoration-line: none;
+  color: blue;
+}
+
+.purchase-card a:hover {
+  text-decoration-line: underline;
+  color: purple;
 }
 
 .inner-purchase-card-div {

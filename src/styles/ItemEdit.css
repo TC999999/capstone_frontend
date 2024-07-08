@@ -1,0 +1,53 @@
+.edit-item-form-div {
+  border: solid 2px black;
+  padding: 5px;
+}
+
+.edit-item-input {
+  margin: 5px;
+}
+
+.edit-item-input label {
+  font-size: 15px;
+}
+
+.edit-item-input input {
+  font-size: 15px;
+}
+
+.edit-item-input select {
+  font-size: 15px;
+}
+
+@media (min-width: 1000px) {
+  .edit-item-input label {
+    font-size: 18px;
+  }
+
+  .edit-item-input input {
+    font-size: 18px;
+  }
+
+  .edit-item-input select {
+    font-size: 18px;
+  }
+}
+
+.edit-item-submit-button {
+  background-color: rgb(236, 243, 36);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+}
+
+.edit-item-submit-button:hover {
+  background-color: gold;
+  color: white;
+}
+
+.edit-item-submit-button:active {
+  background-color: rgb(247, 226, 107);
+  color: black;
+}

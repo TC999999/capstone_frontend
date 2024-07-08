@@ -184,7 +184,7 @@ const Signup = ({ isLoading, setIsLoading }) => {
           />
         </div>
         <div className="regionOrState-div">
-          <label htmlFor="email">Region Or State: </label>
+          <label htmlFor="regionOrState">Region Or State: </label>
           <input
             id="regionOrState"
             type="text"

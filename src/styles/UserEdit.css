@@ -3,6 +3,9 @@
   border-color: black;
   padding: 10px;
   margin: 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px black;
+  background-color: rgb(240, 240, 107);
 }
 
 .edit-form-div label {

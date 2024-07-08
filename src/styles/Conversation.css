@@ -1,10 +1,33 @@
 .sell-item-form-elements-div {
-  display: flex;
-  justify-content: flex-start;
+  border: solid 2px black;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgb(239, 201, 151);
+  box-shadow: 5px 5px 5px black;
 }
 
 .sell-form-div {
   margin: 5px;
+}
+
+.sell-form-div input {
+  width: 200px;
+  font-size: 15px;
+}
+
+.sell-form-div label {
+  font-size: 15px;
+}
+
+@media (min-width: 800px) {
+  .sell-form-div input {
+    font-size: 18px;
+    width: 400px;
+  }
+
+  .sell-form-div label {
+    font-size: 18px;
+  }
 }
 
 .sell-item-button {
@@ -44,4 +67,10 @@
 .new-message-button:active {
   background-color: rgb(16, 80, 218);
   color: black;
+}
+
+.conversation-message-list-div {
+  background-color: aliceblue;
+  border: 2px solid black;
+  border-radius: 10px;
 }

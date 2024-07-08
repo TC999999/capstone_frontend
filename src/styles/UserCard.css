@@ -1,13 +1,33 @@
 .user-card {
   border: solid 1px red;
-  box-shadow: 2px 2px 2px crimson;
+  box-shadow: 5px 5px 5px black;
   margin: 10px;
   padding: 5px;
+  background-color: rgb(119, 238, 238);
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+@media (min-width: 800px) {
+  .user-card {
+    font-size: 18px;
+  }
 }
 
 .user-card a {
   text-decoration-line: none;
   font-family: Arial, Helvetica, sans-serif;
+  color: blue;
+}
+
+.user-card a:hover {
+  text-decoration-line: underline;
+  color: purple;
+}
+
+.user-card a:active {
+  text-decoration-line: underline;
+  color: aqua;
 }
 
 .user-card li {

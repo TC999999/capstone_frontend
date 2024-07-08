@@ -28,7 +28,8 @@ const UserCard = ({ user, sameUser, rating, stars }) => {
         </li>
         <li>
           <b>Average User Rating: </b>
-          {rating} {stars}
+          {isNaN(rating) ? rating : `${rating}/10`}
+          {stars}
         </li>
       </ul>
     </div>

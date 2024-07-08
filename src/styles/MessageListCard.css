@@ -1,9 +1,27 @@
 .message-card {
   border: solid 2px black;
   padding: 2px;
-  background-color: whitesmoke;
+  background-color: rgb(177, 170, 170);
+  margin: 5px;
 }
 
 .message-card a {
   text-decoration-line: none;
+  font-size: 15px;
+  color: blue;
+}
+
+@media (min-width: 800px) {
+  .message-card a {
+    font-size: 20px;
+  }
+}
+
+.message-card a:hover {
+  text-decoration-line: underline;
+  color: purple;
+}
+
+.message-card a:active {
+  color: aquamarine;
 }

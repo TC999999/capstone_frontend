@@ -6,7 +6,15 @@ import ConversationCard from "./ConversationCard.jsx";
 import "../styles/Conversation.css";
 
 const Conversation = () => {
-  const initialState = { finalPrice: "", exchangeMethod: "" };
+  const initialState = {
+    finalPrice: "",
+    exchangeMethod: "",
+    address: "",
+    city: "",
+    regionOrState: "",
+    country: "",
+    zipCode: "",
+  };
   const templateParams = {
     from_name: "",
     user_email: "",
@@ -35,11 +43,21 @@ const Conversation = () => {
         if (item.isSold) {
           setIsSold(true);
         }
-        setFormData((data) => ({ ...data, finalPrice: item.initialPrice }));
 
         setItemName(item.name);
         let sellerUsername = await marketAPI.getItemSeller(itemID);
         setSellerUser(sellerUsername);
+        if (sellerUsername === user.username) {
+          setFormData((data) => ({
+            ...data,
+            finalPrice: item.initialPrice,
+            address: user.address,
+            city: user.city,
+            regionOrState: user.regionOrState,
+            country: user.country,
+            zipCode: user.zipCode,
+          }));
+        }
 
         let conversation = await marketAPI.getConversation(
           itemID,
@@ -83,6 +101,14 @@ const Conversation = () => {
     }
   }, [user]);
 
+  const getUserClass = (currentUserName, fromUsername) => {
+    if (currentUserName === fromUsername) {
+      return "current-user";
+    } else {
+      return "other-user";
+    }
+  };
+
   const handleChange = async (e) => {
     const { name, value } = e.target;
     setFormData((data) => ({ ...data, [name]: value }));
@@ -92,18 +118,27 @@ const Conversation = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
+      let {
+        finalPrice,
+        exchangeMethod,
+        address,
+        city,
+        regionOrState,
+        country,
+        zipCode,
+      } = formData;
       let message = {
-        body: `Hello ${otherUser}, I have chosen to sell my ${itemName} to you. My address is at ${user.address}, ${user.city}, ${user.regionOrState}, ${user.country}, ${user.zipCode}. See you Soon!`,
+        body: `Hello ${otherUser}, I have chosen to sell my ${itemName} to you. My address is at ${address}, ${city}, ${regionOrState}, ${country}, ${zipCode}. See you Soon!`,
       };
-      let { finalPrice, exchangeMethod } = formData;
+
       let data = {
         itemID,
         buyerUsername: otherUser,
         finalPrice,
         exchangeMethod,
       };
-      await marketAPI.sellItem(data);
       await marketAPI.sendMessage(itemID, otherUser, message);
+      await marketAPI.sellItem(data);
       let { from_name, user_email, to_name, item_name } = emailParams;
       await marketAPI.sendNotification({
         from_name,
@@ -175,6 +210,65 @@ const Conversation = () => {
                     required
                   />
                 </div>
+                <div className="sell-form-div  address-div">
+                  <label htmlFor="address">Address: </label>
+                  <input
+                    id="address"
+                    type="text"
+                    name="address"
+                    placeholder="type your address here"
+                    value={formData.address}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="sell-form-div zipCode-div">
+                  <label htmlFor="zipCode">Zipcode: </label>
+                  <input
+                    id="zipCode"
+                    type="number"
+                    name="zipCode"
+                    placeholder="type your zipCode here"
+                    value={formData.zipCode}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="sell-form-div city-div">
+                  <label htmlFor="city">City: </label>
+                  <input
+                    id="city"
+                    type="text"
+                    name="city"
+                    placeholder="type your city here"
+                    value={formData.city}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="sell-form-div regionOrState-div">
+                  <label htmlFor="regionOrState">Region Or State: </label>
+                  <input
+                    id="regionOrState"
+                    type="text"
+                    name="regionOrState"
+                    placeholder="type your region or state here"
+                    value={formData.regionOrState}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="sell-form-div country-div">
+                  <label htmlFor="country">Country: </label>
+                  <input
+                    id="country"
+                    type="text"
+                    name="country"
+                    placeholder="type your country here"
+                    value={formData.country}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
               </div>
               <div className="sell-form-div sell-button-div">
                 <button className="sell-item-button">
@@ -190,11 +284,21 @@ const Conversation = () => {
           <button className="new-message-button">Send New Message</button>
         </Link>
       )}
-      {conversation.map((message) => {
-        return (
-          <ConversationCard key={`message-${message.id}`} message={message} />
-        );
-      })}
+      <div className="conversation-message-list-div">
+        {conversation.map((message) => {
+          return (
+            <ConversationCard
+              key={`message-${message.id}`}
+              message={message}
+              userClass={`${getUserClass(
+                user.username,
+                message.from_username
+              )}`}
+              messageType="user-messages"
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

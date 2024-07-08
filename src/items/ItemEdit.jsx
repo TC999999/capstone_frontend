@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import marketAPI from "../../api";
 import UserContext from "../UserContext";
+import "../styles/ItemEdit.css";
 
 const ItemEdit = () => {
   const initialState = {
@@ -111,11 +112,11 @@ const ItemEdit = () => {
   }
 
   return (
-    <div className="edit-item-form-div">
+    <div className="edit-item-form-page">
       <h1>Edit item {itemName}</h1>
-      <div className="new-item-form">
+      <div className="edit-item-form-div">
         <form onSubmit={handleSubmit}>
-          <div className="name-div">
+          <div className="edit-item-input edit-name-div">
             <label htmlFor="name">Name: </label>
             <input
               id="name"
@@ -128,7 +129,7 @@ const ItemEdit = () => {
             />
           </div>
 
-          <div className="price-div">
+          <div className="edit-item-input edit-price-div">
             <label htmlFor="initialPrice">Price (in $): </label>
             <input
               id="initialPrice"
@@ -142,32 +143,38 @@ const ItemEdit = () => {
             />
           </div>
 
-          <select
-            id="condition"
-            name="condition"
-            value={formData.condition}
-            onChange={handleChange}
-            required
-          >
-            <option key="default" value="">
-              -----Select Options Below-----
-            </option>
-            <option key="great" value="Great">
-              Great
-            </option>
-            <option key="good" value="good">
-              good
-            </option>
-            <option key="ok" value="ok">
-              ok
-            </option>
-            <option key="poor" value="poor">
-              poor
-            </option>
-          </select>
+          <div className="edit-item-input edit-condition-div">
+            <label htmlFor="condition">Condition: </label>
+            <select
+              id="condition"
+              name="condition"
+              value={formData.condition}
+              onChange={handleChange}
+              required
+            >
+              <option key="default" value="">
+                -----Select Item Condition Below-----
+              </option>
+              <option key="great" value="Great">
+                Great
+              </option>
+              <option key="good" value="good">
+                good
+              </option>
+              <option key="ok" value="ok">
+                ok
+              </option>
+              <option key="poor" value="poor">
+                poor
+              </option>
+            </select>
+          </div>
 
-          <div className="description-div">
-            <label htmlFor="description">Description: </label>
+          <div className="edit-item-input edit-description-div">
+            <div className="description-label-div">
+              <label htmlFor="description">Description: </label>
+            </div>
+
             <textarea
               rows="5"
               cols="33"
@@ -182,7 +189,7 @@ const ItemEdit = () => {
 
           {!editLoading && (
             <div className="button-div">
-              <button>Edit!</button>
+              <button className="edit-item-submit-button">Edit!</button>
             </div>
           )}
         </form>
@@ -190,6 +197,9 @@ const ItemEdit = () => {
 
         {subErr && <p>{message}</p>}
       </div>
+      <button className="back-button" onClick={() => navigate(-1)}>
+        ⬅ Back
+      </button>
     </div>
   );
 };

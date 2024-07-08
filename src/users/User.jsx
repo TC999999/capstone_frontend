@@ -47,8 +47,8 @@ const UserProfile = () => {
       let rating = revArr.reduce(function (acc, curr) {
         return acc + curr.rating;
       }, 0);
-      setStars(getStars(rating / revArr.length));
-      return `${rating / revArr.length}/10`;
+
+      return `${rating / revArr.length}`;
     } else {
       return "no reviews yet";
     }
@@ -93,7 +93,10 @@ const UserProfile = () => {
           }
         }
         setReviews(userRes.reviews);
-        setRating(calcRating(userRes.reviews));
+        let rating = calcRating(userRes.reviews);
+        setRating(`${rating}`);
+        let stars = getStars(rating / userRes.reviews.length);
+        setStars(stars);
         setItems(userRes.items);
         setReports(userRes.reports);
 
@@ -141,7 +144,6 @@ const UserProfile = () => {
 
   if (username !== currPage) {
     getUser();
-
     setCurrPage(username);
     setErr(false);
     setMessage("");
@@ -156,7 +158,7 @@ const UserProfile = () => {
   }
 
   if (flaggedUser) {
-    return <h1>This user's account has been flagged!</h1>;
+    return <h1 className="err-msg">This user's account has been flagged!</h1>;
   }
 
   if (err) {
@@ -177,6 +179,13 @@ const UserProfile = () => {
             <button className="edit-user-button">Edit Profile</button>
           </Link>
         )}
+
+        {user.username === userInfo.username && user.isAdmin && (
+          <Link to={`/items/type/new`}>
+            <button className="add-item-type-button">Add New Item Type</button>
+          </Link>
+        )}
+
         <div className="buttons-div">
           {user.username !== userInfo.username && !userInfo.isFlagged && (
             <div className="review-user-button-div">
@@ -270,15 +279,16 @@ const UserProfile = () => {
         <div className="user-purchases">
           <h2>Past Purchases</h2>
           {purchases.length ? (
-            <ul>
+            <div className="user-purchases-list">
               {purchases.map((purchase) => {
                 return (
-                  <li key={`purchase-${purchase.purchaseID}`}>
-                    <PurchaseCard item={purchase} />
-                  </li>
+                  <PurchaseCard
+                    key={`purchase-${purchase.purchaseID}`}
+                    item={purchase}
+                  />
                 );
               })}
-            </ul>
+            </div>
           ) : (
             <p>
               <i>No Purchases Yet!</i>

@@ -1,8 +1,51 @@
 .conversation-card {
   border: solid 2px;
+  border-radius: 10px;
   padding: 5px;
+  margin: 5px;
+  /* box-shadow: 5px 5px 5px black; */
+  font-size: 15px;
+}
+
+.user-messages {
+  width: 430px;
+}
+
+@media (min-width: 800px) {
+  .conversation-card {
+    font-size: 18px;
+  }
 }
 
 .conversation-card a {
   text-decoration-line: none;
+  color: blue;
+}
+
+.conversation-card a:hover {
+  text-decoration-line: underline;
+  color: purple;
+}
+
+.conversation-card a:active {
+  color: aqua;
+}
+
+.current-user-div {
+  display: flex;
+  justify-content: end;
+}
+
+.current-user {
+  background-color: rgb(139, 208, 232);
+  box-shadow: -5px 5px 5px black;
+}
+
+.other-user {
+  background-color: aliceblue;
+  box-shadow: 5px 5px 5px black;
+}
+
+.reported-messages {
+  background-color: rgb(241, 90, 90);
 }

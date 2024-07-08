@@ -3,20 +3,26 @@ import "../styles/ReportCard.css";
 
 const ReportCard = ({ report }) => {
   return (
-    <div className="report">
+    <div className="report-card">
       <h3>
         Report On{" "}
         <Link to={`/users/${report.reportedUser}`}>{report.reportedUser}</Link>
       </h3>
       <ul>
         <li>
-          Made By:{" "}
+          <b>Made by: </b>
           <Link to={`/users/${report.reporterUser}`}>
             {report.reporterUser}
           </Link>{" "}
         </li>
-        <li>Report Body: {report.body}</li>
-        <li>Made at: {report.madeAt}</li>
+        <li>
+          <b>Report Body: </b>
+          {report.body}
+        </li>
+        <li>
+          <b>Made at: </b>
+          {report.madeAt}
+        </li>
       </ul>
     </div>
   );

@@ -1,3 +1,27 @@
-.report li {
+.report-card {
+  font-size: 15px;
+}
+
+@media (min-width: 800px) {
+  .report-card {
+    font-size: 18px;
+  }
+}
+
+.report-card li {
   list-style-type: none;
+}
+
+.report-card a {
+  color: blue;
+  text-decoration-line: none;
+}
+
+.report-card a:hover {
+  color: purple;
+  text-decoration-line: underline;
+}
+
+.report-card a:active {
+  color: aqua;
 }

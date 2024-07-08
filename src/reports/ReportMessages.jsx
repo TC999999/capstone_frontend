@@ -61,6 +61,8 @@ const ReportMessages = () => {
           <ConversationCard
             key={`report-message-${message.id}`}
             message={message}
+            userClass="neither-user"
+            messageType="reported-messages"
           />
         );
       })}

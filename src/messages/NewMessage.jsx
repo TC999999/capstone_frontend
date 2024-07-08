@@ -58,7 +58,7 @@ const NewMessage = () => {
       await marketAPI.sendNotification(emailParams);
       setFormData(initialState);
       setEmailParams(templateParams);
-      navigate(`/items/${itemID}`);
+      navigate(-1);
     } catch (err) {
       setErr(true);
       setMessage(err);

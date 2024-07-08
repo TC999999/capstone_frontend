@@ -130,6 +130,11 @@ class marketAPI {
     return res.types;
   }
 
+  static async addNewItemType(data) {
+    let res = await this.request(`items/types/new`, data, "post");
+    return res;
+  }
+
   static async getReccomendedItems(username) {
     let res = await this.request(`users/${username}/reccomendedItems`);
     return res.reccomendedItems;

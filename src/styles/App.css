@@ -1,5 +1,12 @@
-body {
-  background-color: beige;
+html {
+  min-height: 100%;
+
+  background: linear-gradient(
+    45deg,
+    rgb(183, 183, 1) 10%,
+    rgb(202, 149, 4) 46%,
+    rgb(245, 62, 62) 100%
+  );
 }
 
 .app-header {
@@ -10,7 +17,7 @@ body {
 }
 
 .app-header > span:nth-of-type(2n + 1) {
-  color: red;
+  color: green;
 }
 
 .app-header > span:nth-of-type(2n) {

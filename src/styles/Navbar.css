@@ -10,18 +10,40 @@
   margin: 5px;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration-line: none;
+  font-weight: bold;
+  font-size: 11px;
 }
 
-.navbar span {
+@media (min-width: 800px) {
+  .navbar a {
+    font-size: 18px;
+  }
+}
+
+.nav-box {
   margin: 5px;
 }
 
-.navbar a:hover {
+.nav-box a:hover {
   color: purple;
   background-color: aqua;
 }
 
-.navbar a:active {
+.nav-box a:active {
+  color: purple;
+  background-color: white;
+}
+
+.double-nav-box {
+  margin: 5px;
+}
+
+.user-nav a:hover {
+  color: purple;
+  background-color: aqua;
+}
+
+.user-nav a:active {
   color: purple;
   background-color: white;
 }

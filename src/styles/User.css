@@ -14,6 +14,7 @@
   border: solid 1px;
   box-shadow: 2px 2px 2px black;
   border-radius: 10px;
+  margin: 2px;
 }
 
 .edit-user-button:hover {
@@ -23,6 +24,26 @@
 
 .edit-user-button:active {
   background-color: rgb(247, 226, 107);
+  color: black;
+}
+
+.add-item-type-button {
+  background-color: rgb(36, 209, 243);
+  font-weight: bold;
+  padding: 10px;
+  border: solid 1px;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 10px;
+  margin: 2px;
+}
+
+.add-item-type-button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.add-item-type-button:active {
+  background-color: rgb(36, 209, 243);
   color: black;
 }
 

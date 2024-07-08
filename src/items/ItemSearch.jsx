@@ -20,7 +20,7 @@ const ItemSearch = () => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    function getCompanies() {
+    function getItems() {
       try {
         setIsLoading(true);
         checkParams();
@@ -31,7 +31,7 @@ const ItemSearch = () => {
     }
 
     if (user) {
-      getCompanies();
+      getItems();
     } else {
       setIsLoading(false);
     }
