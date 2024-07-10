@@ -12,7 +12,7 @@ const ItemSearch = () => {
     condition: "",
   };
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState(initialState);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -29,7 +29,7 @@ const ItemSearch = () => {
         setIsLoading(false);
       }
     }
-
+    setIsLoading(true);
     if (user) {
       getItems();
     } else {

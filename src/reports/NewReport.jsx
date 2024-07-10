@@ -8,7 +8,7 @@ const NewReport = () => {
   const initialState = { body: "" };
   const navigate = useNavigate();
   const { username } = useParams();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { user } = useContext(UserContext);
   const [formData, setFormData] = useState(initialState);
   const [err, setErr] = useState(false);

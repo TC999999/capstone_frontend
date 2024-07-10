@@ -9,7 +9,7 @@ import "../styles/ItemPage.css";
 const ItemPage = () => {
   const { id } = useParams();
   const { user } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [item, setItem] = useState([]);
   const [err, setErr] = useState(false);
   const [message, setMessage] = useState("");
@@ -36,6 +36,7 @@ const ItemPage = () => {
         setIsLoading(false);
       }
     }
+    setIsLoading(true);
     if (user) {
       getItem();
     } else {

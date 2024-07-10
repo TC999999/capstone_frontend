@@ -17,7 +17,7 @@ const UserEdit = () => {
   };
 
   const [formData, setFormData] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [editLoading, setEditLoading] = useState(false);
   const { user, updateUser } = useContext(UserContext);
   const { username } = useParams();
@@ -59,6 +59,7 @@ const UserEdit = () => {
         setIsLoading(false);
       }
     };
+    setIsLoading(true);
     if (user && user.username === username) {
       getUser();
     } else {

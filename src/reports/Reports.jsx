@@ -10,22 +10,21 @@ const Reports = () => {
 
   useEffect(() => {
     const getReports = async () => {
-      setIsLoading(true);
       if (user.isAdmin) {
         let usernameData = { username: user.username };
         let reports = await marketAPI.getAllReports(usernameData);
         setReports(reports);
+        setIsLoading(false);
       }
     };
     try {
+      setIsLoading(true);
       if (user) {
         getReports();
-        setIsLoading(false);
       } else {
         setIsLoading(false);
       }
     } catch (err) {
-      console.log(err);
       setIsLoading(false);
     }
   }, [user]);

@@ -19,7 +19,7 @@ const NewItem = () => {
   const { user, updateUser } = useContext(UserContext);
   const [err, setErr] = useState(false);
   const [message, setMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState(initialState);
   const [types, setTypes] = useState([]);
 

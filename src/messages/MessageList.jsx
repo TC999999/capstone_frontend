@@ -7,7 +7,7 @@ import MessageListCard from "./MessageListCard.jsx";
 const MessageList = () => {
   const [messages, setMessages] = useState([]);
   const { user } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { username } = useParams();
   const [err, setErr] = useState(false);
   const [message, setMessage] = useState("");
@@ -27,6 +27,7 @@ const MessageList = () => {
   }
 
   useEffect(() => {
+    setIsLoading(true);
     if (user) {
       getMessages();
     } else {

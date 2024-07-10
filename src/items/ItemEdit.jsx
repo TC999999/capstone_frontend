@@ -59,7 +59,7 @@ const ItemEdit = () => {
         setIsLoading(false);
       }
     };
-
+    setIsLoading(true);
     if (user) {
       getSeller();
     } else {

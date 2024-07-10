@@ -4,7 +4,7 @@ import marketAPI from "../../api.js";
 import UserContext from "../UserContext.js";
 
 const AllUsers = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [users, setUsers] = useState([]);
   const { user } = useContext(UserContext);
 

@@ -8,7 +8,7 @@ const NewType = () => {
   const initialState = {
     typeName: "",
   };
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState(initialState);
   const [types, setTypes] = useState([]);
   const { user } = useContext(UserContext);

@@ -12,7 +12,7 @@ const UserProfile = () => {
   const [userInfo, setUserInfo] = useState("");
   const [reviews, setReviews] = useState([]);
   const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [err, setErr] = useState(false);
   const [message, setMessage] = useState("");
   const [flaggedUser, setFlaggedUser] = useState(false);
