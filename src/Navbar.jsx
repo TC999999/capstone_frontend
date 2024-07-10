@@ -7,11 +7,14 @@ const NavBar = () => {
   const navigate = useNavigate();
   const { user, logOut } = useContext(UserContext);
 
+  //When the logout button is clicked, removes user from context and local storage
+  //and removes token from local storage
   const logOutAndNavigate = () => {
     logOut();
     navigate("/");
   };
 
+  //if user is not logged in, only show sign-up link in navbar
   if (!user) {
     return (
       <div className="navbar">
@@ -27,6 +30,8 @@ const NavBar = () => {
     );
   }
 
+  //if user is logged in, shows item search, messages, and user profile links.
+  //If user is admin, shows reports and users lists
   return (
     <div className="navbar">
       <div className="nav-box">

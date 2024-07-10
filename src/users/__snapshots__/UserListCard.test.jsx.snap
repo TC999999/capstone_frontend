@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="user-card"
+  >
+    <h2>
+       
+      <a
+        href="/users/u1"
+      >
+        u1
+      </a>
+    </h2>
+    <ul>
+      <li>
+        <b>
+          Status: 
+        </b>
+         User
+      </li>
+      <li>
+        <b>
+          Average User Rating: 
+        </b>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;

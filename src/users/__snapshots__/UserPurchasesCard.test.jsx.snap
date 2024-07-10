@@ -1,0 +1,57 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="purchase-card"
+  >
+    <div
+      class="inner-purchase-card-div purchase-image-and-name"
+    >
+      <h3>
+        i4
+      </h3>
+      <img
+        height="200"
+        src="test_url_4"
+        width="200"
+      />
+    </div>
+    <div
+      class="inner-purchase-card-div additional-purchase-info"
+    >
+      <p>
+        <b>
+          Seller:
+        </b>
+         
+        <a
+          href="/users/u3"
+        >
+          u3
+        </a>
+      </p>
+      <p>
+        <b>
+          Price:
+        </b>
+         $150
+      </p>
+      <p>
+        <b>
+          From a Flagged User:
+        </b>
+         No
+      </p>
+      <small>
+        <i>
+          <b>
+            Sold At:
+          </b>
+           2024-07-09 14:23:43.469126-04
+        </i>
+      </small>
+    </div>
+  </div>
+</DocumentFragment>
+`;

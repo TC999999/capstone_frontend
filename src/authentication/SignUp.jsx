@@ -23,12 +23,14 @@ const Signup = ({ isLoading, setIsLoading }) => {
   const [message, setMessage] = useState("");
   const [formData, setFormData] = useState(initialState);
 
+  //navigator.geolocation.getGurrentPosition options
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0,
   };
 
+  //gets the user's current location in longitude and latitude
   function getLocation() {
     return new Promise((res, rej) => {
       navigator.geolocation.getCurrentPosition(res, rej, options);

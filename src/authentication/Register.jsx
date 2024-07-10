@@ -6,6 +6,7 @@ import "../styles/Register.css";
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
 
+  //shows both the login and signup forms
   return (
     <div className="register-forms">
       <Login isLoading={isLoading} setIsLoading={setIsLoading} />

@@ -1,0 +1,191 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="item-list"
+  >
+    <div
+      class="filtered-item-list"
+    >
+      <div
+        class="item-card"
+      >
+        <div
+          class="item-image-name item-info"
+        >
+          <h3>
+            <a
+              href="/items/3"
+            >
+              i3
+            </a>
+          </h3>
+          <img
+            height="200"
+            src="test_url_3"
+            width="200"
+          />
+        </div>
+        <div
+          class="additional-item-info item-info"
+        >
+          <p>
+            <b>
+              Price:
+            </b>
+             $100
+          </p>
+          <p>
+            <b>
+              Seller:
+            </b>
+             
+            <a
+              href="/users/u2"
+            >
+              u2
+            </a>
+          </p>
+          <p>
+            <b>
+              Condition:
+            </b>
+             great
+          </p>
+          <p>
+            <b>
+              Description:
+            </b>
+             test item
+          </p>
+          <p>
+            <b>
+              Location:
+            </b>
+             city2, state2, country2
+          </p>
+        </div>
+      </div>
+      <div
+        class="item-card"
+      >
+        <div
+          class="item-image-name item-info"
+        >
+          <h3>
+            <a
+              href="/items/2"
+            >
+              i2
+            </a>
+          </h3>
+          <img
+            height="200"
+            src="test_url_2"
+            width="200"
+          />
+        </div>
+        <div
+          class="additional-item-info item-info"
+        >
+          <p>
+            <b>
+              Price:
+            </b>
+             $100
+          </p>
+          <p>
+            <b>
+              Seller:
+            </b>
+             
+            <a
+              href="/users/u1"
+            >
+              u1
+            </a>
+          </p>
+          <p>
+            <b>
+              Condition:
+            </b>
+             great
+          </p>
+          <p>
+            <b>
+              Description:
+            </b>
+             test item
+          </p>
+          <p>
+            <b>
+              Location:
+            </b>
+             city1, state1, country1
+          </p>
+        </div>
+      </div>
+      <div
+        class="item-card"
+      >
+        <div
+          class="item-image-name item-info"
+        >
+          <h3>
+            <a
+              href="/items/1"
+            >
+              i1
+            </a>
+          </h3>
+          <img
+            height="200"
+            src="test_url_1"
+            width="200"
+          />
+        </div>
+        <div
+          class="additional-item-info item-info"
+        >
+          <p>
+            <b>
+              Price:
+            </b>
+             $100
+          </p>
+          <p>
+            <b>
+              Seller:
+            </b>
+             
+            <a
+              href="/users/u1"
+            >
+              u1
+            </a>
+          </p>
+          <p>
+            <b>
+              Condition:
+            </b>
+             great
+          </p>
+          <p>
+            <b>
+              Description:
+            </b>
+             test item
+          </p>
+          <p>
+            <b>
+              Location:
+            </b>
+             city1, state1, country1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

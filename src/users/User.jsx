@@ -142,6 +142,7 @@ const UserProfile = () => {
     }
   };
 
+  //if the username in the url changes, so does the page
   if (username !== currPage) {
     getUser();
     setCurrPage(username);

@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="message-card"
+  >
+    <h3>
+      <a
+        href="/messages/conversation/item/1/users/u1/and/u2"
+      >
+        From: u2 about item i3 
+      </a>
+    </h3>
+    <p
+      class="message-sent"
+    >
+      <small>
+        <b>
+          Sent At: 
+        </b>
+        2024-07-09 14:23:43.469126-04
+      </small>
+    </p>
+  </div>
+</DocumentFragment>
+`;

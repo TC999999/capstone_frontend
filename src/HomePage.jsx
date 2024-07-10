@@ -8,8 +8,9 @@ const Home = () => {
   const { user } = useContext(UserContext);
   const [reccomendedItems, setReccomendedItems] = useState([]);
   const [itemsInLocation, setItemsInLocation] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
+  //gets both reccomended items based on type and location
   const getFrontPageItems = async () => {
     try {
       let reccomendedItems = await marketAPI.getReccomendedItems(user.username);
@@ -23,7 +24,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     if (user) {
       getFrontPageItems();
     } else {
@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <div className="home-div">
-      <h1>Welcome to The Capstone Market!</h1>
+      <h1>Welcome to The Worldwide Garage Sale!</h1>
       {!user && <h2>Please log in for full experience!</h2>}
       {user && (
         <div className="front-page-user">

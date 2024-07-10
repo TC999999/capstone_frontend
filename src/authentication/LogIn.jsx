@@ -15,11 +15,13 @@ const Login = ({ isLoading, setIsLoading }) => {
   const [message, setMessage] = useState("");
   const [formData, setFormData] = useState(initialState);
 
+  //changes form data state
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((data) => ({ ...data, [name]: value }));
   };
 
+  //retrieves token from api and sets it in localstorage
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErr(false);

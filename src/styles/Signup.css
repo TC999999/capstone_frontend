@@ -3,6 +3,9 @@
   border-color: black;
   padding: 10px;
   margin: 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px black;
+  background-color: rgb(12, 222, 12);
 }
 .signup-form label {
   font-size: 15px;

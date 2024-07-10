@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="report-list-page-div"
+  >
+    <div
+      class="report-list-div"
+    >
+      <div
+        class="report-list-item"
+      >
+        <a
+          href="/reports/1"
+        >
+          Report on u2 by u1
+        </a>
+        <p>
+          <small>
+            Made At: 2024-07-09 14:23:43.469126-04
+          </small>
+        </p>
+      </div>
+      <div
+        class="report-list-item"
+      >
+        <a
+          href="/reports/2"
+        >
+          Report on u1 by u2
+        </a>
+        <p>
+          <small>
+            Made At: 2024-07-09 14:23:43.469126-04
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

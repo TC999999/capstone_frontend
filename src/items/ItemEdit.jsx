@@ -13,7 +13,7 @@ const ItemEdit = () => {
   };
 
   const [formData, setFormData] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [editLoading, setEditLoading] = useState(false);
   const { user, updateUser } = useContext(UserContext);
   const [sellerUser, setSellerUser] = useState("");
@@ -28,7 +28,6 @@ const ItemEdit = () => {
   useEffect(() => {
     const getItem = async () => {
       try {
-        setIsLoading(true);
         let itemRes = await marketAPI.getItemById(id);
         if (itemRes.isSold) {
           setIsSold(true);
@@ -53,14 +52,19 @@ const ItemEdit = () => {
     };
     const getSeller = async () => {
       let sellerUsername = await marketAPI.getItemSeller(id);
-      if (user && user.username === sellerUsername) {
+      if (user.username === sellerUsername) {
         setSellerUser(sellerUsername);
         getItem();
       } else {
         setIsLoading(false);
       }
     };
-    getSeller();
+
+    if (user) {
+      getSeller();
+    } else {
+      setIsLoading(false);
+    }
   }, [user]);
 
   const handleChange = (e) => {
@@ -107,7 +111,7 @@ const ItemEdit = () => {
     return <h1>{message}</h1>;
   }
 
-  if (user.username !== sellerUser) {
+  if (user.username !== sellerUser && !isLoading) {
     return <h1>Incorrect User!</h1>;
   }
 
@@ -195,7 +199,7 @@ const ItemEdit = () => {
         </form>
         {editLoading && <p>Editing...</p>}
 
-        {subErr && <p>{message}</p>}
+        {subErr && <p className="err-msg">{message}</p>}
       </div>
       <button className="back-button" onClick={() => navigate(-1)}>
         ⬅ Back

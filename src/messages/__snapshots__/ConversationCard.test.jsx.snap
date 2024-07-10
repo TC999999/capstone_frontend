@@ -1,0 +1,59 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="conversation-card-div current-user-div"
+  >
+    <div
+      class="conversation-card current-user user-messages"
+    >
+      <p>
+        <b>
+          From:
+        </b>
+         
+        <a
+          href="/users/u2"
+        >
+          u2
+        </a>
+      </p>
+      <p>
+        <b>
+          To:
+        </b>
+         
+        <a
+          href="/users/u1"
+        >
+          u1
+        </a>
+      </p>
+      <p>
+        <b>
+          About:
+        </b>
+         
+        <a
+          href="/items/1"
+        >
+           i3
+        </a>
+      </p>
+      <p>
+        <b>
+          Body:
+        </b>
+         test body
+      </p>
+      <small>
+        <i>
+          sent at:
+        </i>
+         2024-07-09 14:23:43.469126-04
+      </small>
+    </div>
+  </div>
+</DocumentFragment>
+`;

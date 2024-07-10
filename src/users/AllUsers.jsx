@@ -14,15 +14,14 @@ const AllUsers = () => {
         let usersRes = await marketAPI.getAllUsers();
         console.log(usersRes);
         setUsers(usersRes);
+        setIsLoading(false);
       } catch (err) {
-        console.log(err);
         setIsLoading(false);
       }
     }
     setIsLoading(true);
     if (user && user.isAdmin) {
       getUsers();
-      setIsLoading(false);
     } else {
       setIsLoading(false);
     }

@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="front-item-card"
+    id="item-1"
+  >
+    <h3>
+      <a
+        href="/items/1"
+      >
+        i1
+      </a>
+    </h3>
+    <p>
+      <b>
+        Price: 
+      </b>
+       $100
+    </p>
+    <img
+      height="200"
+      src="test_url_1"
+      width="200"
+    />
+    <div
+      class="item-location-div"
+    >
+      <p>
+        <b>
+          Location:
+        </b>
+         city1, state1, country1
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
