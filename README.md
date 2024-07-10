@@ -11,9 +11,14 @@ Currently, two official plugins are available:
 
 - https://capstone-frontend-x2d4.onrender.com
 
+### Backend Service
+
+- https://github.com/TC999999/capstone_backend
+
 ### Tests
 
-Tests can be run with "npm run test" in the terminal
+- Tests can be run by cloning this repository and inputting "npm run test" in the terminal for frontend
+- Tests for the backend can be run by cloning the backend repository in the link above and inputting "npm run test" in the terminal
 
 ### App Stack
 
