@@ -15,7 +15,7 @@ const NewMessage = () => {
   };
   const navigate = useNavigate();
   const { toUser, itemID } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState(initialState);
   const [emailParams, setEmailParams] = useState(templateParams);
   const [err, setErr] = useState(false);

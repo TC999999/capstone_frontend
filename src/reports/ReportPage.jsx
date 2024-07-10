@@ -17,6 +17,7 @@ const ReportPage = () => {
   const [report, setReport] = useState([]);
 
   useEffect(() => {
+    setIsLoading(true);
     const getReport = async () => {
       try {
         let reportRes = await marketAPI.getReportByID(id);
@@ -32,7 +33,6 @@ const ReportPage = () => {
         setIsLoading(false);
       }
     };
-    setIsLoading(true);
     if (user && user.isAdmin) {
       getReport();
     } else if (user && !user.isAdmin) {

@@ -17,7 +17,7 @@ const UserEdit = () => {
   };
 
   const [formData, setFormData] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [editLoading, setEditLoading] = useState(false);
   const { user, updateUser } = useContext(UserContext);
   const { username } = useParams();
@@ -29,7 +29,6 @@ const UserEdit = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        setIsLoading(true);
         let userRes = await marketAPI.getUserInfo(username);
         let {
           firstName,

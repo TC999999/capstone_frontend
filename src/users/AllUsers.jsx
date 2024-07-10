@@ -4,11 +4,12 @@ import marketAPI from "../../api.js";
 import UserContext from "../UserContext.js";
 
 const AllUsers = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const { user } = useContext(UserContext);
 
   useEffect(() => {
+    setIsLoading(true);
     async function getUsers() {
       try {
         let usersRes = await marketAPI.getAllUsers();
@@ -19,7 +20,7 @@ const AllUsers = () => {
         setIsLoading(false);
       }
     }
-    setIsLoading(true);
+
     if (user && user.isAdmin) {
       getUsers();
     } else {

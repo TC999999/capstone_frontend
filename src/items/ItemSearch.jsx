@@ -12,7 +12,7 @@ const ItemSearch = () => {
     condition: "",
   };
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState(initialState);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,7 +22,6 @@ const ItemSearch = () => {
   useEffect(() => {
     function getItems() {
       try {
-        setIsLoading(true);
         checkParams();
       } catch (err) {
         console.log(err);

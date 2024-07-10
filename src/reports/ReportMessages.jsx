@@ -6,7 +6,7 @@ import ConversationCard from "../messages/ConversationCard.jsx";
 
 const ReportMessages = () => {
   const { user } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([]);
   const { username1, username2 } = useParams();
   const [notAdmin, setNotAdmin] = useState(true);

@@ -9,7 +9,7 @@ import "../styles/ItemPage.css";
 const ItemPage = () => {
   const { id } = useParams();
   const { user } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [item, setItem] = useState([]);
   const [err, setErr] = useState(false);
   const [message, setMessage] = useState("");

@@ -7,7 +7,7 @@ import MessageListCard from "./MessageListCard.jsx";
 const MessageList = () => {
   const [messages, setMessages] = useState([]);
   const { user } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const { username } = useParams();
   const [err, setErr] = useState(false);
   const [message, setMessage] = useState("");
@@ -15,7 +15,6 @@ const MessageList = () => {
 
   async function getMessages() {
     try {
-      setIsLoading(true);
       let allMessages = await marketAPI.getUserMessages(username);
       setMessages(allMessages);
       setIsLoading(false);

@@ -23,7 +23,7 @@ const Conversation = () => {
   };
   const { user } = useContext(UserContext);
   const [itemName, setItemName] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [conversation, setConversation] = useState([]);
   const [otherUser, setOtherUser] = useState("");
   const [sellerUser, setSellerUser] = useState("");

@@ -13,7 +13,7 @@ const ItemEdit = () => {
   };
 
   const [formData, setFormData] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [editLoading, setEditLoading] = useState(false);
   const { user, updateUser } = useContext(UserContext);
   const [sellerUser, setSellerUser] = useState("");
