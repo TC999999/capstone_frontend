@@ -13,6 +13,7 @@ const Home = () => {
   //gets both reccomended items based on type and location
   const getFrontPageItems = async () => {
     try {
+      setIsLoading(true);
       let reccomendedItems = await marketAPI.getReccomendedItems(user.username);
       let itemsInLocation = await marketAPI.getItemsInLocation(user.username);
       setReccomendedItems(reccomendedItems);
