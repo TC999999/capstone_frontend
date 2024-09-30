@@ -9,7 +9,7 @@ Currently, two official plugins are available:
 
 ### Website Link
 
-- https://capstone-frontend-x2d4.onrender.com
+- https://capstone-frontend-x2d4.onrender.com (The Supabase project may be paused, so it may not function properly)
 
 ### Backend Service
 
@@ -18,7 +18,7 @@ Currently, two official plugins are available:
 ### Tests
 
 - Tests can be run by cloning this repository and inputting "npm run test" in the terminal for frontend
-- Tests for the backend can be run by cloning the backend repository in the link above and inputting "npm run test" in the terminal
+- Tests for the backend can be run by cloning the backend repository in the link above, seeding the file called "market-test-schema.sql" into postgreSQL, and inputting "npm run test" in the terminal
 
 ### App Stack
 
